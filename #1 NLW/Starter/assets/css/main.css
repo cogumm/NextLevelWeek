@@ -33,6 +33,7 @@ h6 {
 
 #page-home {
     height: 100vh;
+
     background: url("../img/home-background.svg") no-repeat;
     background-position: 35vw bottom;
 }
@@ -89,6 +90,7 @@ h6 {
 #page-home main h1 {
     font-size: 54px;
 }
+
 #page-home main p {
     font-size: 24px;
 
