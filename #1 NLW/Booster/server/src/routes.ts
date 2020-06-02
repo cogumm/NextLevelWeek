@@ -1,6 +1,4 @@
-require("dotenv").config();
 import express from "express";
-import knex from "./database/connection";
 
 const routes = express.Router();
 
@@ -16,22 +14,19 @@ routes.get("/", (req, res) => {
 });
 
 /**
- * Rota para listar todos os items da aplicação.
+ * Rota "points"
  */
-routes.get("/items", async (req, res) => {
-    const items = await knex("items").select("*");
+import PointsController from "./controllers/PointsController";
+const pointsController = new PointsController();
+routes.post("/points", pointsController.create);
+routes.get("/points", pointsController.index);
+routes.get("/points/:id", pointsController.show);
 
-    /**
-     * Processo de virtualização dos campos do banco.
-     */
-    const serializedItems = items.map((item) => {
-        return {
-            title: item.title,
-            image_url: `${process.env.HOST_APP}:${process.env.PORT_APP}/uploads/${item.image}`,
-        };
-    });
-
-    return res.json(serializedItems);
-});
+/**
+ * Rota "items"
+ */
+import ItemsController from "./controllers/ItemsController";
+const itemsController = new ItemsController();
+routes.get("/items", itemsController.index);
 
 export default routes;
