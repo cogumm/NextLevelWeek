@@ -11,3 +11,5 @@ DELETE: Remover uma informação no back-end.
 Request Param: Parâmetros que vem na própria rota que identificam um recurso.
 Request Body: Parãmetros para criação/atualização de informações.
 Query Param: Parâmetros que vem na própria rota, geralmente opcional para filtros, paginação.
+
+Migrations: Histórico do banco de dados
