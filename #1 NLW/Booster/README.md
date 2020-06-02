@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="#Delicinha" title="Next Level Week Starter" src="../.github/logo.svg" width="250px" />
+    <img alt="#Delicinha" title="Next Level Week Starter" src="../.github/booster.svg" width="250px" />
 </h1>
 
 <h4 align="center">
@@ -70,10 +70,22 @@ Para clonar e executar este aplicativo, você precisará do [Git](https://git-sc
 $ git clone https://github.com/cogumm/NextLevelWeek
 
 # Acessando o diretório DESTE projeto
-$ cd '.\#1 NLW\Booster\'
+$ cd '.\#1 NLW\Booster\server'
 
 # Instalando as dependências
 $ yarn OU npm install
+
+# Configurando o .ENV
+Renomei o arquivo .env.example para apenas .env e o configure de acordo com as suas escolhas.
+
+# Rodando as migrations
+$ knex:migrate
+
+# Rodando as seeds
+$ knex:seed
+
+# Rodando a aplicação em modo desenvolvimento
+$ yarn dev OU node run dev
 ```
 
 ## 🤔 Como contribuir
