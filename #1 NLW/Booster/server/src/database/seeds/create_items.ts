@@ -8,7 +8,7 @@ export async function seed(knex: Knex) {
         },
         {
             title: "Pilhas e Baterias",
-            image: "beterias.svg",
+            image: "baterias.svg",
         },
         {
             title: "Papéis e Papelão",
