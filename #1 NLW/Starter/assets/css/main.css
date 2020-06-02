@@ -2,9 +2,48 @@ html {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
-/* Box model */
-header {
+body {
+  background: #f0f0f5;
+}
+
+a {
+  text-decoration: none;
+}
+
+#page-home {
+  height: 100vh;
+  background: url("../img/home-background.svg") no-repeat;
+  background-position: 35vw bottom;
+}
+
+#page-home .content {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#page-home header {
   display: flex;
+
+  margin-top: 48px;
+
   align-items: center;
   justify-content: space-between;
+}
+
+#page-home header a {
+  display: flex;
+
+  color: #322153;
+  font-weight: 700;
+}
+
+#page-home header a span {
+  display: flex;
+  margin-right: 16px;
+
+  background-image: url("../img/log-in.svg");
+
+  width: 20px;
+  height: 20px;
 }
