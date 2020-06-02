@@ -1,5 +1,6 @@
 require("dotenv").config();
 import express from "express";
+import path from "path";
 import routes from "./routes";
 
 const server = express();
@@ -13,6 +14,14 @@ server.use(express.json());
  * Rotas da aplicação.
  */
 server.use(routes);
+
+/**
+ * Rota pública para ser acessada de forma direta.
+ */
+server.use(
+    "/uploads",
+    express.static(path.resolve(__dirname, "..", "uploads"))
+);
 
 /**
  * Rodando o servidor back-end.
