@@ -1,18 +1,18 @@
 require("dotenv").config();
 import express from "express";
+import routes from "./routes";
 
 const server = express();
 
 /**
- * Rota /
+ * Utilizando o express para converter o JSON em objeto do JS/TS.
  */
-server.get("/", (req, res) => {
-  return res.json({
-    app: "#1 NLW - Dia 1",
-    author: 'Gabriel "CoGUMm" Vilar',
-    mail: "gabriel@cogumm.net",
-  });
-});
+server.use(express.json());
+
+/**
+ * Rotas da aplicação.
+ */
+server.use(routes);
 
 /**
  * Rodando o servidor back-end.
