@@ -100,9 +100,9 @@ Depois que a sua solicitação de recebimento for feita o merging, você pode ex
 
 ## :memo: License
 
-Este projeto está sob licença MIT, para mais detales verifique em [LICENSE](../../LICENSE.md)
+Este projeto está sob licença MIT, para mais detalhes verifique em [LICENSE](../../LICENSE.md)
 
-Made with ♥ by Gabriel F. Vilar :wave: [Telegram][telegram]
+Feito com ♥ por Gabriel F. Vilar :wave: [Telegram][telegram]
 
 [node]: https://nodejs.org/en/
 [react]: https://reactjs.org
