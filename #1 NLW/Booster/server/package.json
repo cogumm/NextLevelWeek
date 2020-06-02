@@ -6,7 +6,8 @@
     "scripts": {
         "start": "ts-node src/server.ts",
         "dev": "ts-node-dev src/server.ts",
-        "knex:migrate": "knex migrate:latest --knexfile knexfile.ts migrate:latest"
+        "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
+        "knex:seed": "knex --knexfile knexfile.ts seed:run"
     },
     "dependencies": {
         "dotenv": "^8.2.0",
