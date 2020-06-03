@@ -34,6 +34,10 @@ function getCities(e) {
 
     const urlCitie = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`;
 
+    /* Limpando as cidades */
+    citieSelect.innerHTML = "<option value=''>Selecione a cidade</option>";
+    citieSelect.disabled = true;
+
     fetch(urlCitie)
         .then((res) => res.json())
         .then((cities) => {
