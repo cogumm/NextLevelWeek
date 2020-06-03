@@ -42,7 +42,7 @@ function getCities(e) {
         .then((res) => res.json())
         .then((cities) => {
             for (const city of cities) {
-                citieSelect.innerHTML += `<option value="${city.id}">${city.nome}</option>`;
+                citieSelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`;
             }
 
             citieSelect.disabled = false;
@@ -50,3 +50,52 @@ function getCities(e) {
 }
 
 document.querySelector("select[name=uf]").addEventListener("change", getCities);
+
+/**
+ * Itens de coleta
+ */
+const collectedItems = document.querySelector("[name=items]");
+
+let selectedItems = [];
+
+function handleSelectedItem(e) {
+    const itemLi = e.target;
+
+    /**
+     * Adicionando ou removendo a classe.
+     */
+    itemLi.classList.toggle("selected");
+
+    const itemId = itemLi.dataset.id;
+
+    /**
+     * Adicionando ou removendo a seleção dos itens da li.
+     */
+    const alreadySelected = selectedItems.findIndex((item) => {
+        const itemFound = item === itemId;
+        return itemFound;
+    });
+
+    // Se selecionado
+    if (alreadySelected >= 0) {
+        // Tirar da seleção
+        const filteredItems = selectedItems.filter((item) => {
+            const itemIsDifferent = item != itemId;
+            return itemIsDifferent;
+        });
+
+        selectedItems = filteredItems;
+    } else {
+        // Se não selecionado, adicionando
+        selectedItems.push(itemId);
+    }
+
+    // console.log(selectedItems);
+    collectedItems.value = selectedItems;
+}
+
+const itemsToCollect = document.querySelectorAll(".items-grid li");
+
+for (const item of itemsToCollect) {
+    item.addEventListener("click", handleSelectedItem);
+}

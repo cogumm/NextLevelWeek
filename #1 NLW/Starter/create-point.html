@@ -33,24 +33,24 @@
 
                     <div class="field">
                         <label for="nomeEntidade">Nome da entidade</label>
-                        <input type="text" name="nomeEntidade" />
+                        <input type="text" name="nomeEntidade" required />
                     </div>
 
                     <div class="field-group">
                         <div class="field">
                             <label for="address">Endereço</label>
-                            <input type="text" namne="address" />
+                            <input type="text" namne="address" required />
                         </div>
                         <div class="field">
                             <label for="number">Número / complemento</label>
-                            <input type="text" name="number" />
+                            <input type="text" name="number" required />
                         </div>
                     </div>
 
                     <div class="field-group">
                         <div class="field">
                             <label for="state">Estado</label>
-                            <select name="uf">
+                            <select name="uf" required>
                                 <option value="">
                                     Selecione o estado
                                 </option>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="field">
                             <label for="city">Cidade</label>
-                            <select name="city" disabled>
+                            <select name="city" disabled required>
                                 <option value="">
                                     Selecione a cidade
                                 </option>
@@ -68,11 +68,57 @@
                     </div>
                 </fieldset>
 
-                <!--     <fieldset>
+                <fieldset>
                     <legend>
                         <h2>Itens de coleta</h2>
                     </legend>
-                </fieldset> -->
+
+                    <div class="items-grid">
+                        <li data-id="1">
+                            <img
+                                src="/assets/img/lampadas.svg"
+                                alt="Lâmpadas"
+                            />
+                            <span>Lâmpadas</span>
+                        </li>
+                        <li data-id="2">
+                            <img
+                                src="/assets/img/baterias.svg"
+                                alt="Pilhas e Baterias"
+                            />
+                            <span>Pilhas e Baterias</span>
+                        </li>
+                        <li data-id="3">
+                            <img
+                                src="/assets/img/papeis-papelao.svg"
+                                alt="Papéis e Papelão"
+                            />
+                            <span>Papéis e Papelão</span>
+                        </li>
+                        <li data-id="4">
+                            <img
+                                src="/assets/img/eletronicos.svg"
+                                alt="Resíduos Eletônicos"
+                            />
+                            <span>Resíduos Eletônicos</span>
+                        </li>
+                        <li data-id="5">
+                            <img
+                                src="/assets/img/organicos.svg"
+                                alt="Resíduos Orgânicos"
+                            />
+                            <span>Resíduos Orgânicos</span>
+                        </li>
+                        <li data-id="6">
+                            <img
+                                src="/assets/img/oleo.svg"
+                                alt="Óleo de Cozinha"
+                            />
+                            <span>Óleo de Cozinha</span>
+                        </li>
+                    </div>
+                    <input type="hidden" name="items" />
+                </fieldset>
 
                 <button type="submit">Cadastrar ponto de coleta</button>
             </form>
