@@ -11,6 +11,7 @@
 
         <link rel="stylesheet" href="./assets/css/main.css" />
         <link rel="stylesheet" href="./assets/css/home.css" />
+        <link rel="stylesheet" href="./assets/css/modal.css" />
         <link rel="stylesheet" href="./assets/css/responsive.css" />
     </head>
     <body>
@@ -42,5 +43,29 @@
                 </main>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div id="modal" class="hide">
+            <div class="content">
+                <div class="header">
+                    <h1>Pontos de coleta</h1>
+                    <a href="#">Fechar</a>
+                </div>
+                <form action="">
+                    <label for="search">Cidade</label>
+                    <div class="search field">
+                        <input
+                            type="text"
+                            name="search"
+                            placeholder="Pesquise por Cidade"
+                        />
+                        <button>
+                            <img src="/assets/img/search.svg" alt="Buscar" />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="/assets/js/index.js"></script>
     </body>
 </html>
