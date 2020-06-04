@@ -1,8 +1,11 @@
-import React from "react";
+// JSX: Sintaxe de XML dentro do JavaScript/TypeScript
+import React, { useState } from "react";
 import "./App.css";
 
+import Home from "./pages/Home";
+
 function App() {
-  return <h1>Estou vivo!</h1>;
+    return <Home />;
 }
 
 export default App;
