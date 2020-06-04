@@ -1,0 +1,34 @@
+{
+    "name": "starter",
+    "version": "1.0.0",
+    "main": "src/server.js",
+    "license": "MIT",
+    "author": {
+        "name": "Gabriel CoGUMm Vilar",
+        "email": "gabriel@cogumm.net"
+    },
+    "keywords": [
+        "starter",
+        "nwl",
+        "next week level",
+        "roketseat"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:cogumm/NextLevelWeek.git"
+    },
+    "homepage": "https://github.com/cogumm/NextLevelWeek/tree/master/%231%20NLW/Starter",
+    "bugs": {
+        "url": "https://github.com/cogumm/NextLevelWeek/issues"
+    },
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
+}
