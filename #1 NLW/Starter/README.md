@@ -69,6 +69,12 @@ $ git clone https://github.com/cogumm/NextLevelWeek
 
 # Acessando o diretório DESTE projeto
 $ cd '.\#1 NLW\Starter\'
+
+# Instalando dependências
+$ yarn OU npm install
+
+# Rodando o back-end em modo de desenvolvimento
+$ yarn dev OU npm run dev
 ```
 
 ## 🤔 Como contribuir
