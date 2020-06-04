@@ -1,5 +1,5 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import { Map, TileLayer, Marker } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
@@ -46,13 +46,16 @@ const CreatePoint = () => {
     ]);
 
     const [formData, setFormData] = useState({
-        nome: "",
+        name: "",
         email: "",
         whatsapp: "",
     });
 
     const [selectedUf, setCity] = useState("0");
     const [selectedCity, setSelectedCity] = useState("0");
+
+    // Permite navegar de um componente para outro sem ter um botão.
+    const history = useHistory();
 
     /**
      * UseEffect para pegar a localização atual do usuário
@@ -174,6 +177,39 @@ const CreatePoint = () => {
         }
     }
 
+    /**
+     * Função do submit.
+     */
+    async function handleSubmit(e: FormEvent) {
+        // console.log("E aí ?");
+        // Evitando que a tela seja recarregada no submit.
+        e.preventDefault();
+
+        const { name, email, whatsapp } = formData;
+        const [latitude, longitude] = selectedPosition;
+        const uf = selectedUf;
+        const city = selectedCity;
+        const items = selectedItems;
+
+        const data = {
+            name,
+            email,
+            whatsapp,
+            latitude,
+            longitude,
+            uf,
+            city,
+            items,
+        };
+
+        // console.log(data);
+        await api.post("/points", data);
+
+        alert("Ponto de coleta criado!");
+
+        history.push("/");
+    }
+
     return (
         <div id="page-create-point">
             <header>
@@ -185,7 +221,7 @@ const CreatePoint = () => {
                 </Link>
             </header>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h1>
                     Cadastro do <br /> ponto de coleta
                 </h1>
