@@ -34,6 +34,8 @@ const CreatePoint = () => {
     const [ufs, setUfs] = useState<string[]>([]);
     const [cities, setCities] = useState<string[]>([]);
 
+    const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
     const [initialPosition, setInitialPosition] = useState<[number, number]>([
         0,
         0,
@@ -42,6 +44,12 @@ const CreatePoint = () => {
         0,
         0,
     ]);
+
+    const [formData, setFormData] = useState({
+        nome: "",
+        email: "",
+        whatsapp: "",
+    });
 
     const [selectedUf, setCity] = useState("0");
     const [selectedCity, setSelectedCity] = useState("0");
@@ -119,7 +127,7 @@ const CreatePoint = () => {
     }
 
     /**
-     * Armazenando a cidade
+     * Armazenando a cidade.
      */
     function handleSelectCity(e: ChangeEvent<HTMLSelectElement>) {
         const city = e.target.value;
@@ -130,11 +138,40 @@ const CreatePoint = () => {
     }
 
     /**
-     * Função para colocar o pin no mapa
+     * Função para colocar o pin no mapa.
      */
     function handleMapClick(e: LeafletMouseEvent) {
         // console.log(e.latlng);
         setSelectedPosition([e.latlng.lat, e.latlng.lng]);
+    }
+
+    /**
+     * Função para armazenar os inputs.
+     */
+    function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+        // console.log(e.target.name, e.target.value);
+        const { name, value } = e.target;
+
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    }
+
+    /**
+     * Função para armazenar os itens selecionados.
+     */
+    function handleSelectItem(id: number) {
+        // console.log("Foi", id);
+        const alreadySelected = selectedItems.findIndex((item) => item === id);
+
+        if (alreadySelected >= 0) {
+            const filteredItems = selectedItems.filter((item) => item !== id);
+
+            setSelectedItems(filteredItems);
+        } else {
+            setSelectedItems([...selectedItems, id]);
+        }
     }
 
     return (
@@ -160,17 +197,32 @@ const CreatePoint = () => {
 
                     <div className="field">
                         <label htmlFor="name">Nome da entidade</label>
-                        <input type="text" name="name" id="name" />
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            onChange={handleInputChange}
+                        />
                     </div>
 
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="email">e-mail</label>
-                            <input type="text" name="email" id="email" />
+                            <input
+                                type="text"
+                                name="email"
+                                id="email"
+                                onChange={handleInputChange}
+                            />
                         </div>
                         <div className="field">
                             <label htmlFor="whatsapp">WhatsApp</label>
-                            <input type="text" name="whatsapp" id="whatsapp" />
+                            <input
+                                type="text"
+                                name="whatsapp"
+                                id="whatsapp"
+                                onChange={handleInputChange}
+                            />
                         </div>
                     </div>
                 </fieldset>
@@ -239,7 +291,15 @@ const CreatePoint = () => {
 
                     <ul className="items-grid">
                         {items.map((item) => (
-                            <li key={item.id}>
+                            <li
+                                key={item.id}
+                                onClick={() => handleSelectItem(item.id)}
+                                className={
+                                    selectedItems.includes(item.id)
+                                        ? "selected"
+                                        : ""
+                                }
+                            >
                                 <img src={item.image_url} alt={item.title} />
                                 <span>{item.title}</span>
                             </li>
