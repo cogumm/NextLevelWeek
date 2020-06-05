@@ -9,7 +9,10 @@ import { AppLoading } from "expo";
 import { Roboto_400Regular, Roboto_500Medium } from "@expo-google-fonts/roboto";
 import { Ubuntu_700Bold, useFonts } from "@expo-google-fonts/ubuntu";
 
-import Home from "./src/pages/Home";
+/**
+ * Importando as Rotas.
+ */
+import Routes from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,16 +27,16 @@ export default function App() {
 
   return (
     <>
-      {/* Personalização do Statusbar
-       * backgroundColor="" só funciona no Android
-       * translucent para que a Statusbar possa estar "por cima"
-       */}
       <StatusBar
         barStyle="dark-content"
         backgroundColor="transparent"
         translucent
       />
-      <Home />
+      <Routes />
     </>
   );
 }
+/* Personalização do Statusbar
+ * backgroundColor="" só funciona no Android
+ * translucent para que a Statusbar possa estar "por cima"
+ */
