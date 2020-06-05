@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  SafeAreaView,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -31,7 +32,7 @@ const Points: React.FC = () => {
   }
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <TouchableOpacity onPress={handleBackToTheFuture}>
           <Icon name="arrow-left" size={20} color="#34cb79" />
@@ -131,7 +132,7 @@ const Points: React.FC = () => {
           </TouchableOpacity>
         </ScrollView>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
