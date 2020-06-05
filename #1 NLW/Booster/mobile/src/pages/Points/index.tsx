@@ -1,22 +1,40 @@
 import React from "react";
 import Constants from "expo-constants";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
+import { SvgUri } from "react-native-svg";
 
 const Points: React.FC = () => {
   const navigation = useNavigation();
 
-  function handleNavigateBack() {
+  /**
+   * Função para voltar na página anterior.
+   */
+  function handleBackToTheFuture() {
     navigation.goBack();
+  }
+
+  /**
+   * Função para navegar quando clicar na imagem no mapa.
+   */
+  function handleNavigateToDetail() {
+    navigation.navigate("Detail");
   }
 
   return (
     <>
       <View style={styles.container}>
-        <TouchableOpacity onPress={handleNavigateBack}>
-          <Icon name="arrow-left" size={20} color="#34cb79 " />
+        <TouchableOpacity onPress={handleBackToTheFuture}>
+          <Icon name="arrow-left" size={20} color="#34cb79" />
         </TouchableOpacity>
 
         <Text style={styles.title}>Bem vindo.</Text>
@@ -25,15 +43,93 @@ const Points: React.FC = () => {
         </Text>
 
         <View style={styles.mapContainer}>
-          <MapView style={styles.map} />
+          <MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: -5.8127497,
+              longitude: -35.2258358,
+              latitudeDelta: 0.014,
+              longitudeDelta: 0.014,
+            }}
+          >
+            <Marker
+              style={styles.mapMarker}
+              onPress={handleNavigateToDetail}
+              coordinate={{
+                latitude: -5.8127497,
+                longitude: -35.2258358,
+              }}
+            >
+              <View style={styles.mapMarkerContainer}>
+                <Image
+                  style={styles.mapMarkerImage}
+                  source={{
+                    uri:
+                      "https://roamthegnome.com/wp-content/uploads/2019/06/japanese-supermarkets-in-japan-header.jpg",
+                  }}
+                />
+                <Text style={styles.mapMarkerTitle}>Mercado</Text>
+              </View>
+            </Marker>
+          </MapView>
         </View>
       </View>
 
       <View style={styles.itemsContainer}>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => {}}
-        ></TouchableOpacity>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 20 }}
+        >
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri
+              width={42}
+              height={42}
+              uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"
+            />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri
+              width={42}
+              height={42}
+              uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"
+            />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri
+              width={42}
+              height={42}
+              uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"
+            />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri
+              width={42}
+              height={42}
+              uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"
+            />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri
+              width={42}
+              height={42}
+              uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"
+            />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri
+              width={42}
+              height={42}
+              uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg"
+            />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </>
   );
