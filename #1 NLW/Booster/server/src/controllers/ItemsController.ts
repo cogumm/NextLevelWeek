@@ -10,7 +10,7 @@ class ItemsController {
         const items = await knex("items").select("*");
 
         /**
-         * Processo de virtualização dos campos do banco.
+         * Processo de serialização dos campos do banco.
          */
         const serializedItems = items.map((item) => {
             return {

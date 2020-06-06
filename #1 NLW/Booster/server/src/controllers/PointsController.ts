@@ -23,7 +23,14 @@ class PointController {
             .distinct()
             .select("points.*");
 
-        return res.json(points);
+        const serializedPoints = points.map((point) => {
+            return {
+                ...points,
+                image_url: `${process.env.HOST_APP}:${process.env.PORT_APP}/uploads/points/${point.image}`,
+            };
+        });
+
+        return res.json(serializedPoints);
     }
 
     /**
@@ -38,12 +45,17 @@ class PointController {
             return res.status(400).json({ message: "Point not found." });
         }
 
+        const serializedPoint = {
+            ...point,
+            image_url: `${process.env.HOST_APP}:${process.env.PORT_APP}/uploads/points/${point.image}`,
+        };
+
         const items = await knex("items")
             .join("point_items", "items.idItems", "=", "point_items.item_id")
             .where("point_items.point_id", id)
             .select("items.title");
 
-        return res.json({ point, items });
+        return res.json({ point: serializedPoint, items });
     }
 
     /**
@@ -67,8 +79,7 @@ class PointController {
         const trx = await knex.transaction();
 
         const point = {
-            image:
-                "https://www.varchev.com/wp-content/uploads/2016/06/121703465-wxtv8fqi-_s8e7084_nishiki_market_kyoto-1.jpg",
+            image: req.file.filename,
             name,
             email,
             whatsapp,
@@ -84,12 +95,15 @@ class PointController {
          * Inserindo os items na tabela point_items.
          */
         const point_id = insertedIds[0];
-        const pointItems = items.map((item_id: number) => {
-            return {
-                item_id,
-                point_id,
-            };
-        });
+        const pointItems = items
+            .split(",")
+            .map((item: string) => Number(item.trim()))
+            .map((item_id: number) => {
+                return {
+                    item_id,
+                    point_id,
+                };
+            });
 
         await trx("point_items").insert(pointItems);
 

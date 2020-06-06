@@ -5,6 +5,8 @@ import { Map, TileLayer, Marker } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
 import axios from "axios";
 
+import Dropzone from "../../components/Dropzone";
+
 import api from "../../services/api";
 
 import "./style.css";
@@ -53,6 +55,8 @@ const CreatePoint = () => {
 
     const [selectedUf, setCity] = useState("0");
     const [selectedCity, setSelectedCity] = useState("0");
+
+    const [selectedFile, setSelectFile] = useState<File>();
 
     // Permite navegar de um componente para outro sem ter um botão.
     const history = useHistory();
@@ -185,13 +189,30 @@ const CreatePoint = () => {
         // Evitando que a tela seja recarregada no submit.
         e.preventDefault();
 
+        // console.log(selectedFile);
+
         const { name, email, whatsapp } = formData;
         const [latitude, longitude] = selectedPosition;
         const uf = selectedUf;
         const city = selectedCity;
         const items = selectedItems;
 
-        const data = {
+        const data = new FormData();
+
+        data.append("name", name);
+        data.append("email", email);
+        data.append("whatsapp", whatsapp);
+        data.append("latitude", String(latitude));
+        data.append("longitude", String(longitude));
+        data.append("uf", uf);
+        data.append("city", city);
+        data.append("items", items.join(","));
+
+        if (selectedFile) {
+            data.append("image", selectedFile);
+        }
+
+        /* const data = {
             name,
             email,
             whatsapp,
@@ -200,7 +221,7 @@ const CreatePoint = () => {
             uf,
             city,
             items,
-        };
+        }; */
 
         // console.log(data);
         await api.post("/points", data);
@@ -226,6 +247,8 @@ const CreatePoint = () => {
                     Cadastro do <br /> ponto de coleta
                 </h1>
 
+                <Dropzone onFileUploaded={setSelectFile} />
+
                 <fieldset>
                     <legend>
                         <h2>Dados</h2>
@@ -243,7 +266,7 @@ const CreatePoint = () => {
 
                     <div className="field-group">
                         <div className="field">
-                            <label htmlFor="email">e-mail</label>
+                            <label htmlFor="email">E-mail</label>
                             <input
                                 type="text"
                                 name="email"

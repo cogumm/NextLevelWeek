@@ -6,3 +6,6 @@ package-lock.json
 
 src/database/*.sqlite
 src/database/database.sqlite-journal
+
+uploads/points/*.png
+uploads/points/*.jpg
