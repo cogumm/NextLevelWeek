@@ -3,6 +3,7 @@ import express from "express";
 import path from "path";
 import routes from "./routes";
 import cors from "cors";
+import { errors } from "celebrate";
 
 const server = express();
 
@@ -26,6 +27,11 @@ server.use(
     "/uploads",
     express.static(path.resolve(__dirname, "..", "uploads"))
 );
+
+/**
+ * Utiliza o Celebrate para lidar com os erros da forma com que eles retornam para o frontend.
+ */
+server.use(errors());
 
 /**
  * Rodando o servidor back-end.

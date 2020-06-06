@@ -6,7 +6,7 @@ import "./style.css";
 
 import logo from "../../assets/logo.svg";
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
         <div id="page-home">
             <div className="content">
@@ -17,15 +17,15 @@ const Home = () => {
                 <main>
                     <h1>Seu marketplace de coleta de resíduos.</h1>
                     <p>
-                        Ajudamnos pessoas a encontrarem pontos de coleta de
-                        forma eficiente.
+                        Ajudamos pessoas a encontrarem pontos de coleta de forma
+                        eficiente
                     </p>
 
                     <Link to="/create">
                         <span>
                             <FiLogIn />
                         </span>
-                        <strong>Cadastre um ponto de coleta.</strong>
+                        <strong>Cadastre um ponto de coleta</strong>
                     </Link>
                 </main>
             </div>
