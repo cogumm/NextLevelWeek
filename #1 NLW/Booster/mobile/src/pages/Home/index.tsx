@@ -1,31 +1,84 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   ImageBackground,
   Text,
   Image,
   StyleSheet,
-  TextInput,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { Feather as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import RNPickerSelect from "react-native-picker-select";
+
+interface UF {
+  id: number;
+  nome: string;
+  sigla: string;
+}
+
+interface City {
+  id: number;
+  nome: string;
+  sigla: string;
+}
 
 const Home = () => {
-  const [uf, setUF] = useState("");
-  const [city, setCity] = useState("");
+  const [uf, setUF] = useState<UF[]>([]);
+  const [city, setCity] = useState<City[]>([]);
+  const [selectedUf, setSelectedUf] = useState("0");
+  const [selectedCity, setSelectedCity] = useState("0");
 
   const navigation = useNavigation();
+
+  /**
+   * API IBGE
+   */
+  useEffect(() => {
+    axios
+      .get(
+        "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
+      )
+      .then((response) => {
+        setUF(response.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedUf === "0") {
+      return;
+    }
+    axios
+      .get(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`
+      )
+      .then((response) => {
+        setCity(response.data);
+      });
+  }, [selectedUf]);
+
   /**
    * Função para navegar de uma tela para a outra.
    */
   function handleNavigateToPoints() {
     navigation.navigate("Points", {
-      uf,
-      city,
+      selectedUf,
+      selectedCity,
     });
+  }
+
+  /**
+   * Funções do "select"
+   */
+  function handleSelectedUf(uf: string) {
+    setSelectedUf(uf);
+  }
+
+  function handleSelectedCity(city: string) {
+    setSelectedCity(city);
   }
 
   return (
@@ -53,25 +106,59 @@ const Home = () => {
         </View>
 
         <View style={styles.footer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite o Estado"
-            value={uf}
-            onChangeText={setUF}
-            maxLength={2}
-            autoCapitalize="characters"
-            autoCorrect={false}
+          <RNPickerSelect
+            placeholder={{
+              label: "Selecione uma UF",
+              value: "0",
+            }}
+            style={{
+              viewContainer: {
+                backgroundColor: "#FFF",
+                alignItems: "center",
+                justifyContent: "center",
+                height: 60,
+                borderRadius: 10,
+                marginBottom: 8,
+                paddingHorizontal: 24,
+              },
+            }}
+            onValueChange={(item) => handleSelectedUf(item)}
+            items={uf.map((item) => {
+              return {
+                label: `${item.sigla} - ${item.nome}`,
+                value: item.sigla,
+              };
+            })}
           />
-          <TextInput
-            style={styles.input}
-            placeholder="Digite a Cidade"
-            value={city}
-            onChangeText={setCity}
-            autoCorrect={false}
+
+          <RNPickerSelect
+            placeholder={{
+              label: "Selecione uma cidade",
+              value: "0",
+            }}
+            style={{
+              viewContainer: {
+                backgroundColor: "#FFF",
+                alignItems: "center",
+                justifyContent: "center",
+                height: 60,
+                borderRadius: 10,
+                marginBottom: 8,
+                paddingHorizontal: 24,
+              },
+            }}
+            onValueChange={(item) => handleSelectedCity(item)}
+            items={
+              city
+                ? city.map((item) => {
+                    return { label: `${item.nome}`, value: item.nome };
+                  })
+                : []
+            }
           />
 
           <RectButton style={styles.button} onPress={handleNavigateToPoints}>
-            <View style={styles.buttonText}>
+            <View style={styles.buttonIcon}>
               <Text>
                 <Icon name="arrow-right" color="#FFF" size={24} />
               </Text>
