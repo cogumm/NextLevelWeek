@@ -11,7 +11,7 @@ import {
   Alert,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 import { SvgUri } from "react-native-svg";
 import * as Location from "expo-location";
@@ -32,8 +32,16 @@ interface Point {
   longitude: number;
 }
 
+// Recebendo os parâmetros que vem da Home
+interface Params {
+  uf: string;
+  city: string;
+}
+
 const Points: React.FC = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const routeParams = route.params as Params;
 
   const [items, setItems] = useState<Item[]>([]);
   const [points, setPoints] = useState<Point[]>([]);
@@ -87,15 +95,15 @@ const Points: React.FC = () => {
     api
       .get("/points", {
         params: {
-          city: "Natal",
-          uf: "RN",
-          items: [1, 2],
+          city: routeParams.city,
+          uf: routeParams.uf,
+          items: selectedItems,
         },
       })
       .then((res) => {
         setPoints(res.data);
       });
-  }, []);
+  }, [selectedItems]);
 
   /**
    * Função para voltar na página anterior.
@@ -146,31 +154,11 @@ const Points: React.FC = () => {
                 longitudeDelta: 0.014,
               }}
             >
-              <Marker
-                style={styles.mapMarker}
-                onPress={() => handleNavigateToDetail(point.id)}
-                coordinate={{
-                  latitude: -5.8127497,
-                  longitude: -35.2258358,
-                }}
-              >
-                <View style={styles.mapMarkerContainer}>
-                  <Image
-                    style={styles.mapMarkerImage}
-                    source={{
-                      uri:
-                        "https://roamthegnome.com/wp-content/uploads/2019/06/japanese-supermarkets-in-japan-header.jpg",
-                    }}
-                  />
-                  <Text style={styles.mapMarkerTitle}>Mercado</Text>
-                </View>
-              </Marker>
-
-              {/* {points.map((point) => (
+              {points.map((point) => (
                 <Marker
                   key={String(point.id)}
                   style={styles.mapMarker}
-                  onPress={handleNavigateToDetail}
+                  onPress={() => handleNavigateToDetail(point.id)}
                   coordinate={{
                     latitude: point.latitude,
                     longitude: point.longitude,
@@ -186,7 +174,7 @@ const Points: React.FC = () => {
                     <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                   </View>
                 </Marker>
-              ))} */}
+              ))}
             </MapView>
           )}
         </View>
