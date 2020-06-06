@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -8,17 +8,57 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Feather as Icon, FontAwesome } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 
+import api from "../../services/api";
+
+interface Params {
+  point_id: number;
+}
+
+interface Data {
+  point: {
+    image: string;
+    name: string;
+    email: string;
+    whatsapp: string;
+    city: string;
+    uf: string;
+  };
+  items: {
+    title: string;
+  }[];
+}
 const Detail: React.FC = () => {
+  const [data, setData] = useState<Data>({} as Data);
   const navigation = useNavigation();
 
+  const route = useRoute();
+
+  // Hack
+  const routeParams = route.params as Params;
+
+  /**
+   * Carregando o ponto pelo ID que veio.
+   */
+  useEffect(() => {
+    api.get(`/points/${routeParams.point_id}`).then((res) => {
+      setData(res.data);
+    });
+  }, []);
   /**
    * Função para voltar na página anterior.
    */
   function handleBackToTheFuture() {
     navigation.goBack();
+  }
+
+  /**
+   * Se não achar o ponto.
+   */
+  if (!data.point) {
+    return null;
   }
 
   return (
@@ -31,17 +71,20 @@ const Detail: React.FC = () => {
         <Image
           style={styles.pointImage}
           source={{
-            uri:
-              "https://roamthegnome.com/wp-content/uploads/2019/06/japanese-supermarkets-in-japan-header.jpg",
+            uri: data.point.image,
           }}
         />
 
-        <Text style={styles.pointName}>Mercadão</Text>
-        <Text style={styles.pointItems}>Lâmpadas, Óleo de cozinha</Text>
+        <Text style={styles.pointName}>{data.point.name}</Text>
+        <Text style={styles.pointItems}>
+          {data.items.map((item) => item.title).join(", ")}
+        </Text>
 
         <View style={styles.address}>
           <Text style={styles.addressTitle}>Endereço</Text>
-          <Text style={styles.addressContent}>Rual aaaaa</Text>
+          <Text style={styles.addressContent}>
+            {data.point.city}, {data.point.uf}
+          </Text>
         </View>
       </View>
 

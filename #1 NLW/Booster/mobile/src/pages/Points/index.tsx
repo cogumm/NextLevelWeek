@@ -8,11 +8,13 @@ import {
   ScrollView,
   Image,
   SafeAreaView,
+  Alert,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 import { SvgUri } from "react-native-svg";
+import * as Location from "expo-location";
 
 import api from "../../services/api";
 
@@ -22,16 +24,77 @@ interface Item {
   image_url: string;
 }
 
+interface Point {
+  id: number;
+  name: string;
+  image: string;
+  latitude: number;
+  longitude: number;
+}
+
 const Points: React.FC = () => {
   const navigation = useNavigation();
 
   const [items, setItems] = useState<Item[]>([]);
+  const [points, setPoints] = useState<Point[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  // Salvando a lat e lon do usuário
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([
+    0,
+    0,
+  ]);
 
   useEffect(() => {
     api.get("/items").then((res) => {
       setItems(res.data);
     });
+  }, []);
+
+  /**
+   * Função para pegar a localização do usuário.
+   */
+  useEffect(() => {
+    async function LoadPosition() {
+      // Pedindo ao usuário para autorizar a localização.
+      const { status } = await Location.requestPermissionsAsync();
+
+      // Se não deu a permissão para acessar.
+      if (status !== "granted") {
+        Alert.alert(
+          "Ooooooops...",
+          "Precisamos de sua permissão para obter a localização."
+        );
+        return;
+      }
+
+      const location = await Location.getCurrentPositionAsync();
+
+      const { latitude, longitude } = location.coords;
+
+      // console.log(latitude, longitude);
+
+      setInitialPosition([latitude, longitude]);
+    }
+
+    LoadPosition();
+  }, []);
+
+  /**
+   * Carregando os Pontos.
+   */
+  useEffect(() => {
+    api
+      .get("/points", {
+        params: {
+          city: "Natal",
+          uf: "RN",
+          items: [1, 2],
+        },
+      })
+      .then((res) => {
+        setPoints(res.data);
+      });
   }, []);
 
   /**
@@ -44,8 +107,8 @@ const Points: React.FC = () => {
   /**
    * Função para navegar quando clicar na imagem no mapa.
    */
-  function handleNavigateToDetail() {
-    navigation.navigate("Detail");
+  function handleNavigateToDetail(id: number) {
+    navigation.navigate("Detail", { point_id: id });
   }
 
   function handleSelectItem(id: number) {
@@ -73,35 +136,59 @@ const Points: React.FC = () => {
         </Text>
 
         <View style={styles.mapContainer}>
-          <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: -5.8127497,
-              longitude: -35.2258358,
-              latitudeDelta: 0.014,
-              longitudeDelta: 0.014,
-            }}
-          >
-            <Marker
-              style={styles.mapMarker}
-              onPress={handleNavigateToDetail}
-              coordinate={{
-                latitude: -5.8127497,
-                longitude: -35.2258358,
+          {initialPosition[0] !== 0 && (
+            <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: initialPosition[0],
+                longitude: initialPosition[1],
+                latitudeDelta: 0.014,
+                longitudeDelta: 0.014,
               }}
             >
-              <View style={styles.mapMarkerContainer}>
-                <Image
-                  style={styles.mapMarkerImage}
-                  source={{
-                    uri:
-                      "https://roamthegnome.com/wp-content/uploads/2019/06/japanese-supermarkets-in-japan-header.jpg",
+              <Marker
+                style={styles.mapMarker}
+                onPress={() => handleNavigateToDetail(point.id)}
+                coordinate={{
+                  latitude: -5.8127497,
+                  longitude: -35.2258358,
+                }}
+              >
+                <View style={styles.mapMarkerContainer}>
+                  <Image
+                    style={styles.mapMarkerImage}
+                    source={{
+                      uri:
+                        "https://roamthegnome.com/wp-content/uploads/2019/06/japanese-supermarkets-in-japan-header.jpg",
+                    }}
+                  />
+                  <Text style={styles.mapMarkerTitle}>Mercado</Text>
+                </View>
+              </Marker>
+
+              {/* {points.map((point) => (
+                <Marker
+                  key={String(point.id)}
+                  style={styles.mapMarker}
+                  onPress={handleNavigateToDetail}
+                  coordinate={{
+                    latitude: point.latitude,
+                    longitude: point.longitude,
                   }}
-                />
-                <Text style={styles.mapMarkerTitle}>Mercado</Text>
-              </View>
-            </Marker>
-          </MapView>
+                >
+                  <View style={styles.mapMarkerContainer}>
+                    <Image
+                      style={styles.mapMarkerImage}
+                      source={{
+                        uri: point.image,
+                      }}
+                    />
+                    <Text style={styles.mapMarkerTitle}>{point.name}</Text>
+                  </View>
+                </Marker>
+              ))} */}
+            </MapView>
+          )}
         </View>
       </View>
 
