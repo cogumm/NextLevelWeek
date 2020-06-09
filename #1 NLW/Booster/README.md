@@ -50,10 +50,10 @@ O objetivo é conectar pessoas a empresas que coletam resíduos específicos, co
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Node.js][node]
-- [React][react]
-- [React Native][rn]
-- [TypeScript][typescript]
+-   [Node.js][node]
+-   [React][react]
+-   [React Native][rn]
+-   [TypeScript][typescript]
 
 ## 🔖 Layout
 
@@ -63,37 +63,49 @@ Para acessar o layout, basta acessar o seguinte link: [Figma](<https://www.figma
 
 Para clonar e executar este aplicativo, você precisará do [Git](https://git-scm.com) instalado no seu computador, ou simplesmente baixe o aplicativo compactado [LINK](https://github.com/cogumm/NextLevelWeek/archive/master.zip)
 
-### Install Em construção :construction:
+### Instalação /web
 
 ```bash
-# Clonando o repositório
+# 1. Clonando o repositório
 $ git clone https://github.com/cogumm/NextLevelWeek
 
-# Acessando o diretório DESTE projeto
+# 2. Acessando o diretório do projeto API que se encontrar no diretório /server
 $ cd '.\#1 NLW\Booster\server'
 
-# Instalando as dependências
+# 2.1. Instalando as dependências
 $ yarn OU npm install
 
-# Configurando o .ENV
+# 2.2. Configurando o .ENV
 Renomei o arquivo .env.example para apenas .env e o configure de acordo com as suas escolhas.
 
-# Rodando as migrations
+# 2.3. Rodando as migrations
 $ knex:migrate
 
-# Rodando as seeds
+# 2.4. Rodando as seeds
 $ knex:seed
 
-# Rodando a aplicação em modo desenvolvimento
+# 2.5. Rodando a aplicação em modo desenvolvimento
 $ yarn dev OU node run dev
+
+# 3. Projeto WEB que se encontrar no diretório /web
+$ cd '.\#1 NLW\Booster\web'
+# 3.1. Repita o procedimento 2.1
+# 3.2. Rodando a aplicação em modo desenvolvimento
+$ yarn start OU node run start
+
+# 3. Projeto MOBILE que se encontrar no diretório /mobile
+$ cd '.\#1 NLW\Booster\mobile'
+# 3.1. Repita o procedimento 2.1
+# 3.2. Rodando a aplicação em modo desenvolvimento
+$ yarn start OU node run start
 ```
 
 ## 🤔 Como contribuir
 
-- Realize um fork;
-- Crie uma branch: `git checkout -b my-feature`;
-- Envie suas mudanças: `git commit -m 'feat: My new feature'`;
-- Faça um push da sua branch: `git push origin my-feature`.
+-   Realize um fork;
+-   Crie uma branch: `git checkout -b my-feature`;
+-   Envie suas mudanças: `git commit -m 'feat: My new feature'`;
+-   Faça um push da sua branch: `git push origin my-feature`.
 
 After merging your receipt request to done, you can delete a branch from yours.
 Depois que a sua solicitação de recebimento for feita o merging, você pode excluir a sua branch.
