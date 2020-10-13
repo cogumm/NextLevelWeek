@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import landing from './pages/Landing/Landing';
-import orfanagesMap from './pages/Orfanages/OrfanagesMap';
+import landing from './pages/Landing';
+import orfanagesMap from './pages/Orfanages';
 
 function Routes() {
     return (
@@ -14,6 +14,5 @@ function Routes() {
         </BrowserRouter>
     );
 }
-
 
 export default Routes;
