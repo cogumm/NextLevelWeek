@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 interface IButtonImageProps {
-    active?: boolean
+    active?: boolean;
 }
 
 export const Container = styled.div`
@@ -153,53 +153,3 @@ export const OpenDetails = styled.div`
         }
     }
 `
-// #page-orphanage aside {
-//   position: fixed;
-//   height: 100%;
-//   padding: 32px 24px;
-//   background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
-
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// #page-orphanage aside img {
-//   width: 48px;
-// }
-
-// #page-orphanage aside footer a,
-// #page-orphanage aside footer button {
-//   width: 48px;
-//   height: 48px;
-
-//   border: 0;
-
-//   background: #12AFCB;
-//   border-radius: 16px;
-
-//   cursor: pointer;
-
-//   transition: background-color 0.2s;
-
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// #page-orphanage aside footer a:hover,
-// #page-orphanage aside footer button:hover {
-//   background: #17D6EB;
-// }
-
-// .orphanage-details .orphanage-details-content .map-container .leaflet-container {
-//   border-bottom: 1px solid #DDE3F0;
-//   border-radius: 20px;
-// }
-
-// .orphanage-details .orphanage-details-content .open-details div.open-on-weekends {
-//   background: linear-gradient(154.16deg, #EDFFF6 7.85%, #FFFFFF 91.03%);
-//   border: 1px solid #A1E9C5;
-//   color: #37C77F;
-// }
