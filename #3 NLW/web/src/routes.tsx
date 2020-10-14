@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import landing from './pages/Landing';
-import orfanagesMap from './pages/Orfanages';
+import orfanagesMap from './pages/OrfanagesMap';
 
 function Routes() {
     return (
