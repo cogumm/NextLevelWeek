@@ -23,7 +23,7 @@ module.exports = {
     port: Number(process.env.TYPEORM_PORT),
 
     migrations: [path.join(__dirname, 'src', 'database', 'migrations', '*.ts')],
-    entities: [path.join(__dirname, 'src', 'database', '*.ts')],
+    entities: [path.join(__dirname, 'src', 'models', '*.ts')],
     cli: {
         migrationsDir: [path.join(__dirname, 'src', 'database', 'migrations')],
     },
