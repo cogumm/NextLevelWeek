@@ -4,11 +4,8 @@ import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import { Link } from 'react-router-dom';
 
-import Leaflet from 'leaflet';
-
 import Sidebar from "../../components/Sidebar/";
-
-import mapMarkerImg from '../../images/map-marker.svg';
+import happyMapIcon from "../../utils/happyMapIcon";
 
 import {
     Container,
@@ -20,15 +17,6 @@ import {
     MapContainer,
     OpenDetails
 } from './styles';
-
-
-const happyMapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
-
-    iconSize: [58, 68],
-    iconAnchor: [29, 68],
-    popupAnchor: [0, -60]
-});
 
 const Orphanage: React.FC = () => {
     return (

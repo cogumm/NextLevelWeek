@@ -1,24 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
-import Leaflet from 'leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-import 'leaflet/dist/leaflet.css';
+import mapMarkerImg from '../../images/map-marker.svg';
+import happyMapIcon from "../../utils/happyMapIcon";
+
 import '../../styles/leaflet.css';
 
 import { Container, SideBar } from './styles';
-
-import mapMarkerImg from '../../images/map-marker.svg';
-
-// Pin personalizado
-const mapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
-    iconSize: [58, 68],
-    iconAnchor: [29, 68],
-
-    popupAnchor: [170, 2]
-});
 
 const OrfanagesMap: React.FC = () => {
     return (
@@ -47,7 +37,7 @@ const OrfanagesMap: React.FC = () => {
 
                 <Marker
                     position={[-5.8127497, -35.2258358]}
-                    icon={mapIcon}
+                    icon={happyMapIcon}
                 >
                     <Popup closeButton={false} minWidth={240} maxHeight={240} className="map-popup">
                         Lar dos devs.

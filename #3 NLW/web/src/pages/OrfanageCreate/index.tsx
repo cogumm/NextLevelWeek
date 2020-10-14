@@ -1,11 +1,10 @@
 import React from "react";
 import { Map, Marker, TileLayer } from 'react-leaflet';
-import Leaflet from 'leaflet';
 
 import { FiPlus } from "react-icons/fi";
-import Sidebar from "../../components/Sidebar";
 
-import mapMarkerImg from '../../images/map-marker.svg';
+import Sidebar from "../../components/Sidebar";
+import happyMapIcon from "../../utils/happyMapIcon";
 
 import {
     Container,
@@ -15,14 +14,6 @@ import {
     OpenOnWeekendContainer,
     SelectButton
 } from './styles';
-
-const happyMapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
-
-    iconSize: [58, 68],
-    iconAnchor: [29, 68],
-    popupAnchor: [0, -60]
-})
 
 const OrphanageCreate: React.FC = () => {
     return (
