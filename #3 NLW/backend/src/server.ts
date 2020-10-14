@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 
 import 'express-async-errors';
 
@@ -14,6 +15,9 @@ import routes from './routes';
 import errorHandler from './errors/handler';
 
 const server = express();
+
+// Cors da aplicação.
+server.use(cors());
 
 /**
  * Utilizando o express para converter o JSON em objeto do JS/TS.
