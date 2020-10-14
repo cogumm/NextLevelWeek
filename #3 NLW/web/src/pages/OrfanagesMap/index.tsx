@@ -5,7 +5,7 @@ import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import Leaflet from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
-import './leaflet.css';
+import '../../styles/leaflet.css';
 
 import { Container, SideBar } from './styles';
 

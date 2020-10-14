@@ -2,9 +2,11 @@ import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Leaflet from 'leaflet';
+
+import Sidebar from "../../components/Sidebar/";
 
 import mapMarkerImg from '../../images/map-marker.svg';
 
@@ -19,6 +21,7 @@ import {
     OpenDetails
 } from './styles';
 
+
 const happyMapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
 
@@ -28,20 +31,9 @@ const happyMapIcon = Leaflet.icon({
 });
 
 const Orphanage: React.FC = () => {
-    const { goBack } = useHistory();
-
     return (
         <Container>
-            {/* <SideBar /> */}
-            {/* <aside>
-                <img src={mapMarkerImg} alt="Happy" />
-
-                <footer>
-                    <button type="button" onClick={goBack}>
-                        <FiArrowLeft size={24} color="#FFF" />
-                    </button>
-                </footer>
-            </aside> */}
+            <Sidebar />
             <Content>
                 <DetailsContainer>
                     <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
@@ -109,7 +101,7 @@ const Orphanage: React.FC = () => {
                                 Atendemos <br />
                                 fim de semana
                             </div>
-                            <button type="button" className="contact-button">
+                            <button type="button">
                                 <FaWhatsapp size={20} color="#FFF" />
                                 Entrar em contato
                             </button>

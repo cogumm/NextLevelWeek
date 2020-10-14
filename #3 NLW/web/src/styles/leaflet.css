@@ -1,5 +1,7 @@
 .leaflet-container {
     z-index: 5;
+    border-bottom: 1px solid #DDE3F0;
+    border-radius: 20px;
 }
 
 .map-popup .leaflet-popup-content-wrapper {

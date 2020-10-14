@@ -16,9 +16,11 @@ export const Content = styled.main`
 export const DetailsContainer = styled.div`
     width: 700px;
     margin: 64px auto;
+
     background: #FFFFFF;
     border: 1px solid #D3E2E5;
     border-radius: 20px;
+
     overflow: hidden;
 
     > img {
@@ -30,17 +32,21 @@ export const DetailsContainer = styled.div`
 
 export const ImagesContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6 ,1fr);
     column-gap: 16px;
+
     margin: 16px 40px 0;
 `
 
 export const ButtonImage = styled.button<IButtonImageProps>`
+    border: 0;
     height: 88px;
     background: none;
+    cursor: pointer;
     border-radius: 20px;
     overflow: hidden;
     outline: none;
+
     opacity: 0.6;
 
     ${props => props.active && css`
@@ -59,15 +65,14 @@ export const OrphanageDetails = styled.div`
 
     h1 {
         color: #4D6F80;
-        font-family: Quicksand;
         font-size: 54px;
         line-height: 54px;
         margin-bottom: 8px;
     }
 
     p {
-        color: #5C8599;
         line-height: 28px;
+        color: #5C8599;
         margin-top: 24px;
     }
 
@@ -80,7 +85,6 @@ export const OrphanageDetails = styled.div`
     }
 
     > h2 {
-        font-family: Quicksand;
         font-size: 36px;
         line-height: 46px;
         color: #4D6F80;
@@ -98,15 +102,16 @@ export const MapContainer = styled.div`
         text-align: center;
 
         a {
-        line-height: 24px;
-        color: #0089A5;
-        text-decoration: none;
+            line-height: 24px;
+            color: #0089A5;
+            text-decoration: none;
         }
     }
 `
 
 export const OpenDetails = styled.div`
     margin-top: 24px;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
@@ -115,6 +120,7 @@ export const OpenDetails = styled.div`
         padding: 32px 24px;
         border-radius: 20px;
         line-height: 28px;
+
         background: linear-gradient(149.97deg, #E6F7FB 8.13%, #FFFFFF 92.67%);
         border: 1px solid #B3DAE2;
         color: #5C8599;
@@ -125,31 +131,36 @@ export const OpenDetails = styled.div`
         }
 
         & + div {
-            background: linear-gradient(149.97deg, #E6F7FB 8.13%, #FFFFFF 92.67%);
-            border: 1px solid #B3DAE2;
-            color: #5C8599;
+            background: linear-gradient(154.16deg, #EDFFF6 7.85%, #FFFFFF 91.03%);
+            border: 1px solid #A1E9C5;
+            color: #37C77F;
         }
     }
 
     > button {
         margin-top: 64px;
+
         width: 100%;
         height: 64px;
+        border: 0;
+        cursor: pointer;
         background: #3CDC8C;
         border-radius: 20px;
         color: #FFFFFF;
         font-weight: 800;
+
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: background-color 0.2s;
 
-        &:hover {
-            background: #36CF82;
-        }
+        transition: background-color 0.2s;
 
         svg {
             margin-right: 16px;
+        }
+
+        &:hover {
+            background: #36CF82;
         }
     }
 `

@@ -15,14 +15,16 @@ export const Content = styled.main`
 export const Form = styled.form`
     width: 700px;
     margin: 64px auto;
+
     background: #FFFFFF;
     border: 1px solid #D3E2E5;
     border-radius: 20px;
-    overflow: hidden;
+
     padding: 64px 80px;
 
-    fieldset {
+    overflow: hidden;
 
+    fieldset {
         border: 0;
 
         & + fieldset {
@@ -31,11 +33,12 @@ export const Form = styled.form`
 
         legend {
             width: 100%;
-            font-family: Quicksand;
+
             font-size: 32px;
             line-height: 34px;
             color: #5C8599;
-            font-weight: bold;
+            font-weight: 700;
+
             border-bottom: 1px solid #D3E2E5;
             margin-bottom: 40px;
             padding-bottom: 24px;
@@ -44,15 +47,20 @@ export const Form = styled.form`
 
     > button {
         margin-top: 64px;
+
         width: 100%;
         height: 64px;
-        background: "#3cdc8c";
+        border: 0;
+        cursor: pointer;
+        background: #3CDC8C;
         border-radius: 20px;
-        color: "#fff";
+        color: #FFFFFF;
         font-weight: 800;
+
         display: flex;
         justify-content: center;
         align-items: center;
+
         transition: background-color 0.2s;
 
         svg {
@@ -76,9 +84,10 @@ export const InputContainer = styled.div`
         line-height: 24px;
 
         span {
-        font-size: 14px;
-        margin-left: 24px;
-        line-height: 24px;
+            font-size: 14px;
+            color: #8FA7B3;
+            margin-left: 24px;
+            line-height: 24px;
         }
     }
 
@@ -107,9 +116,10 @@ export const InputContainer = styled.div`
     > button {
         width: 100%;
         height: 64px;
-        background: "#f5f8fa";
-        border: 1px dashed "#96d2f0";
+        background: #F5F8FA;
+        border: 1px dashed #96D2F0;
         border-radius: 20px;
+        cursor: pointer;
     }
 `
 
@@ -120,12 +130,15 @@ export const OpenOnWeekendContainer = styled.div`
 
 export const SelectButton = styled.button<ISelectButtonProps>`
     height: 64px;
-    background: "#f5f8fa";
-    border: 1px solid "#d3e2e5";
-    color: "#5c8599";
+    background: #F5F8FA;
+    border: 1px solid #D3E2E5;
+    color: #5C8599;
+    cursor: pointer;
 
     ${props => props.active && css`
-        background: "#edfff6";
+        background: #EDFFF6;
+        border: 1px solid #A1E9C5;
+        color: #37C77F;
     `}
 
     &:first-child {
@@ -134,5 +147,6 @@ export const SelectButton = styled.button<ISelectButtonProps>`
 
     &:last-child {
         border-radius: 0 20px 20px 0;
+         border-left: 0;
     }
 `
