@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
@@ -42,6 +44,11 @@ server.use(errorHandler);
 /**
  * Rodando o servidor back-end.
  */
-server.listen(3001, () => {
-    console.log('Servidor backend inicializado com sucesso na porta ' + 3001)
+const PORT = process.env.PORT_APP || 3001;
+
+server.listen(PORT, () => {
+    console.log(
+        'Servidor backend inicializado com sucesso na porta ' +
+        PORT
+    );
 });
