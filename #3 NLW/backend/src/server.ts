@@ -1,12 +1,17 @@
 import express from 'express';
 import path from 'path';
 
+import 'express-async-errors';
+
 // Conexão com o bando de dados
 import './database/connection';
 
 // Importando as rotas
 import './routes';
 import routes from './routes';
+
+// Error handler
+import errorHandler from './errors/handler';
 
 const server = express();
 
@@ -24,6 +29,11 @@ server.use(routes);
  * Rota pública do upload de imagens.
  */
 server.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
+/**
+ * Lidando com exceção
+ */
+server.use(errorHandler);
 
 /**
  * Rodando o servidor back-end.
