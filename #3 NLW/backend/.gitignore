@@ -1,4 +1,6 @@
 node_modules/
 *.sqlite
 
+uploads/*
+!uploads/.gitkeep
 yarn.lock
