@@ -46,8 +46,8 @@ const OrfanagesMap: React.FC = () => {
             </SideBar>
 
             <Map
-                center={[-5.8127497, -35.2258358]}
-                zoom={15}
+                center={[-5.8044209, -35.263095]}
+                zoom={12}
                 style={{ width: '100%', height: '100%' }}
             >
                 <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
