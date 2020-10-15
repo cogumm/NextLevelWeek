@@ -4,10 +4,6 @@ interface ISelectButtonProps {
     active?: boolean;
 }
 
-interface IOpenOnWeekendsProps {
-    open: boolean;
-}
-
 export const Container = styled.div`
     display: flex;
 `
@@ -116,6 +112,10 @@ export const InputContainer = styled.div`
         padding: 16px;
         line-height: 28px;
     }
+
+    input[type=file] {
+        display: none;
+    }
 `
 
 export const ImagesContainer = styled.div`
@@ -123,15 +123,26 @@ export const ImagesContainer = styled.div`
     grid-template-columns: (5, 1fr);
     grid-gap: 16px;
 
-    height: 96px;
-    background: #F5F8FA;
-    border: 1px dashed #96D2F0;
-    border-radius: 20px;
-    cursor: pointer;
+    label {
+        &:hover {
+            cursor: pointer;
+        }
+        height: 96px;
+        background: #F5F8FA;
+        border: 1px dashed #96D2F0;
+        border-radius: 20px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        height: 96px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
 `
 
 export const OpenOnWeekendContainer = styled.div`

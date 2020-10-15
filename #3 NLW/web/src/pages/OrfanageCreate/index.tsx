@@ -137,7 +137,6 @@ const OrphanageCreate: React.FC = () => {
 
                         <InputContainer>
                             <label htmlFor="images">Fotos</label>
-
                             <ImagesContainer>
                                 {previewImages.map(image => {
                                     return (
@@ -149,17 +148,16 @@ const OrphanageCreate: React.FC = () => {
                                     )
                                 })}
 
-                                <label htmlFor="image[]" className="new-image">
+                                <label htmlFor="image[]">
                                     <FiPlus size={24} color="#15b6d6" />
                                 </label>
-
-                                <input
-                                    type="file"
-                                    id="image[]"
-                                    multiple
-                                    onChange={handleSelectImages}
-                                />
                             </ImagesContainer>
+                            <input
+                                type="file"
+                                id="image[]"
+                                multiple
+                                onChange={handleSelectImages}
+                            />
                         </InputContainer>
                     </fieldset>
 
