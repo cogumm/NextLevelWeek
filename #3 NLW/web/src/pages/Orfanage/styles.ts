@@ -4,6 +4,10 @@ interface IButtonImageProps {
     active?: boolean;
 }
 
+interface IOpenOnWeekendsProps {
+    open: boolean;
+}
+
 export const Container = styled.div`
     display: flex;
     min-height: 100vh;
@@ -32,7 +36,7 @@ export const DetailsContainer = styled.div`
 
 export const ImagesContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(6 ,1fr);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 16px;
 
     margin: 16px 40px 0;
@@ -89,6 +93,28 @@ export const OrphanageDetails = styled.div`
         line-height: 46px;
         color: #4D6F80;
     }
+
+    > button {
+        margin-top: 64px;
+        width: 100%;
+        height: 64px;
+        background: #3cdc8c;
+        border-radius: 20px;
+        color: #FFF;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background: #36cf82;
+        }
+
+        svg {
+            margin-right: 16px;
+        }
+    }
 `
 
 export const MapContainer = styled.div`
@@ -116,27 +142,6 @@ export const OpenDetails = styled.div`
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
 
-    div {
-        padding: 32px 24px;
-        border-radius: 20px;
-        line-height: 28px;
-
-        background: linear-gradient(149.97deg, #E6F7FB 8.13%, #FFFFFF 92.67%);
-        border: 1px solid #B3DAE2;
-        color: #5C8599;
-
-        > svg {
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        & + div {
-            background: linear-gradient(154.16deg, #EDFFF6 7.85%, #FFFFFF 91.03%);
-            border: 1px solid #A1E9C5;
-            color: #37C77F;
-        }
-    }
-
     > button {
         margin-top: 64px;
 
@@ -163,4 +168,43 @@ export const OpenDetails = styled.div`
             background: #36CF82;
         }
     }
+`
+export const OpeningHoursContainer = styled.div`
+    padding: 32px 24px;
+    border-radius: 20px;
+    line-height: 28px;
+
+    background: linear-gradient(149.97deg, #E6F7FB 8.13%, #FFFFFF 92.67%);
+    border: 1px solid #B3DAE2;
+    color: #5C8599;
+
+    > svg {
+        display: block;
+        margin-bottom: 20px;
+    }
+`
+
+export const OpenWeekends = styled.div<IOpenOnWeekendsProps>`
+    padding: 32px 24px;
+    border-radius: 20px;
+    line-height: 28px;
+    background: linear-gradient(154.16deg, #FDF0F5 7.85%, #FFF 91.03%);
+    border: 1px solid #FFBCD4;
+    color: #FF669D;
+
+    svg {
+        display: block;
+        margin-bottom: 20px;
+        color: #FF669D;
+    }
+
+    ${props => props.open && css`
+        background: linear-gradient(154.16deg, #EDFFF6 7.85%, #FFF 91.03%);
+        border: 1px solid #A1E9C5;
+        color: #37C77F;
+
+        svg {
+            color: #37C77F;
+        }
+    `}
 `
