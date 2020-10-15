@@ -19,7 +19,7 @@ interface IOpharnage {
     longitude: number;
 }
 
-const OrfanagesMap: React.FC = () => {
+const OrphanagesMap: React.FC = () => {
     const [orphanages, setOrphanages] = useState<IOpharnage[]>([]);
 
     useEffect(() => {
@@ -77,6 +77,6 @@ const OrfanagesMap: React.FC = () => {
     );
 }
 
-export default OrfanagesMap;
+export default OrphanagesMap;
 
 /* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */
