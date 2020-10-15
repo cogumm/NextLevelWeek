@@ -4,6 +4,10 @@ interface ISelectButtonProps {
     active?: boolean;
 }
 
+interface IOpenOnWeekendsProps {
+    open: boolean;
+}
+
 export const Container = styled.div`
     display: flex;
 `
@@ -112,15 +116,22 @@ export const InputContainer = styled.div`
         padding: 16px;
         line-height: 28px;
     }
+`
 
-    > button {
-        width: 100%;
-        height: 64px;
-        background: #F5F8FA;
-        border: 1px dashed #96D2F0;
-        border-radius: 20px;
-        cursor: pointer;
-    }
+export const ImagesContainer = styled.div`
+    display: grid;
+    grid-template-columns: (5, 1fr);
+    grid-gap: 16px;
+
+    height: 96px;
+    background: #F5F8FA;
+    border: 1px dashed #96D2F0;
+    border-radius: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const OpenOnWeekendContainer = styled.div`
