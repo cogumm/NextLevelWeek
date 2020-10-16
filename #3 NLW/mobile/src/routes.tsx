@@ -8,13 +8,13 @@ const { Navigator, Screen } = createStackNavigator();
 import OrphanagesMap from './pages/OrphanagesMap';
 import Orphanage from './pages/Orphanage';
 
-export default function Routes() {
-    return (
-        <NavigationContainer>
-            <Navigator screenOptions={{ headerShown: false }}>
-                <Screen name="OrphanagesMap" component={OrphanagesMap} />
-                <Screen name="Orphanage" component={Orphanage} />
-            </Navigator>
-        </NavigationContainer>
-    );
-}
+const Routes: React.FC = () => (
+    <NavigationContainer>
+        <Navigator screenOptions={{ headerShown: false }}>
+            <Screen name="OrphanagesMap" component={OrphanagesMap} />
+            <Screen name="Orphanage" component={Orphanage} />
+        </Navigator>
+    </NavigationContainer>
+);
+
+export default Routes;

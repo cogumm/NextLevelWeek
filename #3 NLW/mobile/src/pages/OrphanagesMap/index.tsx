@@ -1,12 +1,21 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
-import { useNavigation } from '@react-navigation/native';
+import { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 
 import mapMarker from '../../images/map-marker.png';
 
-export default function OrphanagesMap() {
+import {
+    MapContainer,
+    Map,
+    CalloutContainer,
+    CalloutText,
+    Footer,
+    FooterText,
+    CreateOtphanageButton
+} from './styles';
+
+const OrphanagesMap: React.FC = () => {
     const navigation = useNavigation();
 
     function handleNavigateToOrphanage() {
@@ -14,10 +23,9 @@ export default function OrphanagesMap() {
     }
 
     return (
-        <View style={styles.container}>
-            <MapView
+        <MapContainer>
+            <Map
                 provider={PROVIDER_GOOGLE}
-                style={styles.map}
                 initialRegion={{
                     latitude: -5.8026889,
                     longitude: -35.2224104,
@@ -37,81 +45,22 @@ export default function OrphanagesMap() {
                     }}
                 >
                     <Callout tooltip onPress={handleNavigateToOrphanage}>
-                        <View style={styles.calloutContainer}>
-                            <Text style={styles.calloutText}>Lar dos devs</Text>
-                        </View>
+                        <CalloutContainer>
+                            <CalloutText>Lar dos devs</CalloutText>
+                        </CalloutContainer>
                     </Callout>
                 </Marker>
-            </MapView>
+            </Map>
 
-            <View style={styles.footer}>
-                <Text style={styles.footerText}>2 orfanatos encontrados</Text>
+            <Footer>
+                <FooterText>2 orfanatos encontrados</FooterText>
 
-                <TouchableOpacity style={styles.createOrphanageButton}>
+                <CreateOtphanageButton>
                     <Feather name="plus-circle" size={20} color="#FFF" />
-                </TouchableOpacity>
-            </View>
-        </View>
+                </CreateOtphanageButton>
+            </Footer>
+        </MapContainer>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-
-    map: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-    },
-
-    calloutContainer: {
-        width: 160,
-        height: 46,
-        paddingHorizontal: 16,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        borderRadius: 16,
-        justifyContent: 'center',
-    },
-
-    calloutText: {
-        fontFamily: 'Nunito_700Bold',
-        color: '#0089A5',
-        fontSize: 15,
-    },
-
-    footer: {
-        position: 'absolute',
-        left: 24,
-        right: 24,
-        bottom: 32,
-
-        backgroundColor: '#FFF',
-        borderRadius: 20,
-        height: 56,
-        paddingLeft: 24,
-
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-
-        // Sombreamento no Android
-        elevation: 10,
-        // Sombreamento no iOS
-    },
-
-    footerText: {
-        fontFamily: 'Nunito_700Bold',
-        color: "#8FA7B3",
-    },
-
-    createOrphanageButton: {
-        width: 56,
-        height: 56,
-        backgroundColor: '#15C3D6',
-        borderRadius: 20,
-
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
+export default OrphanagesMap;
