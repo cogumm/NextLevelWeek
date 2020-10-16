@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { BorderlessButton } from 'react-native-gesture-handler';
 import { Feather } from "@expo/vector-icons";
 
-import { Container, Title } from './styles';
+import { Container, Title, BackButton, CloseButton } from './styles';
 import { View } from 'react-native';
 
 interface IHeaderProps {
@@ -20,18 +19,18 @@ const HeaderComponent: React.FC<IHeaderProps> = ({ title, showCancel = true }: I
 
     return (
         <Container>
-            <BorderlessButton onPress={navigation.goBack}>
+            <BackButton onPress={navigation.goBack}>
                 <Feather name="arrow-left" size={24} color="#15B6D6" />
-            </BorderlessButton>
+            </BackButton>
             <Title>
                 {title}
             </Title>
 
             { showCancel ?
                 (
-                    <BorderlessButton onPress={handleGoHomePage}>
+                    <CloseButton onPress={handleGoHomePage}>
                         <Feather name="x" size={24} color="#FF669D" />
-                    </BorderlessButton>
+                    </CloseButton>
                 ) : (
                     <View />
                 )
