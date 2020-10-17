@@ -77,7 +77,7 @@ const OrphanagesMap: React.FC = () => {
             </Map>
 
             <Footer>
-                <FooterText>2 orfanatos encontrados</FooterText>
+                <FooterText>{orphanages.length} orfanatos encontrados</FooterText>
 
                 <CreateOtphanageButton onPress={handleNavigateToCreateOrphanage}>
                     <Feather name="plus-circle" size={20} color="#FFF" />
