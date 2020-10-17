@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View, ScrollView, Text, Linking } from 'react-native';
+import { View, ScrollView, Text, Linking } from 'react-native';
 import { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
@@ -60,6 +60,8 @@ const OrphanageDetails: React.FC = () => {
         });
     }, [params.id]);
 
+    console.log(orphanage);
+
     // Fazer tela de loading
     if (!orphanage) {
         return (
@@ -80,7 +82,7 @@ const OrphanageDetails: React.FC = () => {
                 <ScrollView horizontal pagingEnabled>
                     {orphanage.images.map(image => {
                         return (
-                            <Image
+                            <OrphanageImage
                                 key={image.id}
                                 source={{ uri: image.url }}
                             />

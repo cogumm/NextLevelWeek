@@ -1,9 +1,9 @@
-import styled from 'styled-components/native'
-import { Dimensions } from 'react-native'
-import MapView from 'react-native-maps'
-import { RectButton } from 'react-native-gesture-handler'
+import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
+import { RectButton } from 'react-native-gesture-handler';
 
-const full_width = Dimensions.get('window').width
+const full_width = Dimensions.get('window').width;
 
 export const Container = styled.ScrollView`
   flex: 1;
