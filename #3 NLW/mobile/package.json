@@ -15,6 +15,7 @@
     "axios": "^0.20.0",
     "expo": "~39.0.2",
     "expo-font": "~8.3.0",
+    "expo-image-picker": "~9.1.0",
     "expo-status-bar": "~1.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
