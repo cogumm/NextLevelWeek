@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import api from '../../services/api';
 import mapMarker from '../../images/map-marker.png';
@@ -27,11 +27,13 @@ const OrphanagesMap: React.FC = () => {
     const navigation = useNavigation();
 
     const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
-    useEffect(() => {
+
+    // Sempre que o usuário sair e voltar para a tela o useFocusEffect é disparado
+    useFocusEffect(() => {
         api.get('/orphanages').then(res => {
             setOrphanages(res.data);
         });
-    }, []);
+    });
 
     function handleNavigateToOrphanage(id: number) {
         navigation.navigate('Orphanage', { id });
