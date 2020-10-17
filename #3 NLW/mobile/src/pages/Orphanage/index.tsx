@@ -60,8 +60,6 @@ const OrphanageDetails: React.FC = () => {
         });
     }, [params.id]);
 
-    console.log(orphanage);
-
     // Fazer tela de loading
     if (!orphanage) {
         return (
