@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-	:construction: Next Level Week 3.0 🚀 In progress.. :construction:
+	:construction: Next Level Week 3.0 🚀
 </h4>
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/cogumm/NextLevelWeek?color=%2304D361">
@@ -62,14 +62,38 @@ Para acessar o layout, basta acessar o seguinte link: [Figma](<https://www.notio
 
 Para clonar e executar este aplicativo, você precisará do [Git](https://git-scm.com) instalado no seu computador, ou simplesmente baixe o aplicativo compactado [LINK](https://github.com/cogumm/NextLevelWeek/archive/master.zip)
 
-### Instalação
+### Instalação / utilização
 
 ```bash
 # 1. Clonando o repositório
 $ git clone https://github.com/cogumm/NextLevelWeek
 
 # 2. Acessando o diretório do projeto API que se encontrar no diretório /server
-$ cd '.\#3 NLW\'
+$ cd '.\#3 NLW\backend'
+
+# 2.1. Instalando as dependências
+$ yarn OU npm install
+
+# 2.2. Configurando o .ENV
+Renomei o arquivo .env.example para apenas .env e o configure de acordo com as suas escolhas.
+
+# 2.3. Rodando as migrations do banco de dados
+$ yarn typeorm migration:run OU npm run typeorm migration:run
+
+# 2.4. Rodando a aplicação em modo desenvolvimento
+$ yarn dev:server
+
+# 3. Projeto WEB que se encontrar no diretório /web
+$ cd '.\#3 NLW\web'
+# 3.1. Repita o procedimento 2.1 e 2.2
+# 3.2. Rodando a aplicação em modo desenvolvimento
+$ yarn start OU node run start
+
+# 3. Projeto MOBILE que se encontrar no diretório /mobile
+$ cd '.\#3 NLW\mobile'
+# 3.1. Repita o procedimento 2.1
+# 3.2. Rodando a aplicação em modo desenvolvimento
+$ yarn start OU node run start
 ```
 
 ## 🤔 Como contribuir
