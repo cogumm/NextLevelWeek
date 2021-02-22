@@ -20,6 +20,7 @@
 <p align="center">
   <a href="#information_source-nlw---o-que-é-a-next-level-week">Next Level Week</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#1-primeira-nlw">#1 NLW</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#4-quarta-nlw">#4 NLW</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
@@ -36,8 +37,26 @@ Nesta primeira Next Level Week foi subdividida em duas, na Starter onde foi ensi
 
 Para visualizar os projetos separados,
 
+## #4 Quarta NLW
+
+Nesta quarta Next Level Week foi subdividida em três trilhas, ReactJS (front-end), NodeJS (back-end) e Elixir (back-end).
+
+-   Trilha ReactJS (Front-end)
+
+    > Se o seu objetivo está alinhado com o front-end, e você deseja construir interfaces modernas e reativas na web utilizando uma biblioteca modular e escalável, essa trilha é para você.
+
+-   Trilha Node.js (Back-end)
+
+    > Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você.
+
+-   Trilha Elixir (Back-end)
+    > Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você.
+
 ## :memo: License
 
-Este projeto está sob licença MIT, para mais detales verifique em [LICENSE](LICENSE.md)
+Este projeto está sob licença MIT, para mais detales verifique em [LICENSE][license]
 
 Made with ♥ by Gabriel F. Vilar :wave: [Telegram][telegram]
+
+[telegram]: https://t.me/CoGUMm
+[license]: https://cogumm.mit-license.org/
