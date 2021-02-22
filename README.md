@@ -2,6 +2,8 @@
     <img alt="#Delicinha" title="Next Level Week Starter" src="./.github/logo.svg" width="250px" />
 </h1>
 
+> A primeira coisa que você precisa saber sobre a jornada como dev é que o aprendizado é contínuo e sempre haverá um próximo nível
+
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/cogumm/NextLevelWeek?color=%2304D361">
 
@@ -35,7 +37,9 @@ Um evento online e totalmente gratuito que o ajudará a dar o próximo passo na 
 
 Nesta primeira Next Level Week foi subdividida em duas, na Starter onde foi ensinado os conceitos básicos e na Booster onde os conceitos são mais avançados, desde uma API até uma aplicação mobile.
 
-Para visualizar os projetos separados,
+<h1 align="center">
+    <img alt="Next Level Week 1" title="Next Level Week 1" src="./.github/nlw1.jpg" width="500px" />
+</h1>
 
 ## #4 Quarta NLW
 
