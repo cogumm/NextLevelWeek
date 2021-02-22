@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+    # Aplicação
+    api:
+        container_name: "nwl04-api"
+        restart: always
+        build: .
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./:/app/nwl04_api
