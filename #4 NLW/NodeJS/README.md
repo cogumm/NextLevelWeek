@@ -22,6 +22,8 @@ $ docker-compose up -d --build
 $ docker-compose down -v
 ```
 
+To check if your application is running, just open your browser or Insomnia and run using `http://localhost:3001`
+
 ## 🤔 How to contribute
 
 -   Fork this project;
