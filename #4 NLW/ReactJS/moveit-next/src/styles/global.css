@@ -39,7 +39,7 @@ body,
 input,
 textarea,
 button {
-    font: 400 16rem "Inter", sans-serif;
+    font: 400 16px "Inter", sans-serif;
 }
 
 button {
@@ -49,14 +49,4 @@ button {
 a {
     text-decoration: none;
     color: inherit;
-}
-
-.container {
-    height: 100vh;
-    max-width: 992px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-
-    display: flex;
-    flex-direction: column;
 }
