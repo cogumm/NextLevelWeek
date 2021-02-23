@@ -60,33 +60,3 @@ a {
     display: flex;
     flex-direction: column;
 }
-
-.experience-bar {
-    display: flex;
-    align-items: center;
-}
-
-.experience-bar span {
-    font-size: 1rem;
-}
-
-.experience-bar > div {
-    flex: 1;
-    height: 4px;
-    border-radius: 4px;
-    background: var(--gray-line);
-    margin: 0 1.5rem;
-    position: relative;
-}
-
-.experience-bar > div > div {
-    height: 4px;
-    border-radius: 4px;
-    background: var(--green);
-}
-
-span.current-experience {
-    position: absolute;
-    top: 12px;
-    transform: translateX(-50%);
-}
