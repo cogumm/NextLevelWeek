@@ -2,8 +2,16 @@ import "reflect-metadata";
 import express from "express";
 import routes from "./routes";
 
-import "./database";
+import createConnection from "./database";
 
+/**
+ * Inicializando a aplicação no banco de dados de produção OU de teste.
+ */
+createConnection();
+
+/**
+ * Instâncianado a aplicação utilizando o express.
+ */
 const app = express();
 
 /**
