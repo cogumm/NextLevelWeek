@@ -20,4 +20,12 @@ import UserController from "./controllers/UserController";
 const userController = new UserController();
 routes.post("/users", userController.create);
 
+/**
+ * Rota de pesquisa
+ */
+import SurveysController from "./controllers/SurveysController";
+const surveysController = new SurveysController();
+routes.post("/surveys", surveysController.create);
+routes.get("/surveys", surveysController.show);
+
 export default routes;
