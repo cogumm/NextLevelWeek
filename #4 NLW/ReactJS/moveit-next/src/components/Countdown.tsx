@@ -46,8 +46,6 @@ export function Countdown() {
         setIsActive(false);
         // Voltando para o tempo total.
         setTime(timeCountdown * 60);
-        // Começa um novo desafio.
-        startNewChallenge();
     }
 
     useEffect(() => {
@@ -62,6 +60,9 @@ export function Countdown() {
 
             // Quanto finalizar o tempo tem que parar, por isso que troca o estado para falso.
             setIsActive(false);
+
+            // Começa um novo desafio.
+            startNewChallenge();
         }
     }, [isActive, time]);
 
