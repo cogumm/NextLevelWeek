@@ -26,5 +26,6 @@ routes.post("/users", userController.create);
 import SurveysController from "./controllers/SurveysController";
 const surveysController = new SurveysController();
 routes.post("/surveys", surveysController.create);
+routes.get("/surveys", surveysController.show);
 
 export default routes;
