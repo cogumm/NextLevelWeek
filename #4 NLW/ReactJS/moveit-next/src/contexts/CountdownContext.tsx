@@ -54,6 +54,7 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
     function resetCountdown() {
         clearTimeout(countdownTimeout);
         setIsActive(false);
+        setHasFinished(false);
         // Voltando para o tempo total.
         setTime(timeCountdown * 60);
     }
