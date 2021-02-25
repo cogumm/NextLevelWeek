@@ -28,4 +28,11 @@ const surveysController = new SurveysController();
 routes.post("/surveys", surveysController.create);
 routes.get("/surveys", surveysController.show);
 
+/**
+ * Rota envio de e-mail.
+ */
+import SendMailController from "./controllers/SendMailController";
+const sendMailController = new SendMailController();
+routes.post("/sendmail", sendMailController.execute);
+
 export default routes;
