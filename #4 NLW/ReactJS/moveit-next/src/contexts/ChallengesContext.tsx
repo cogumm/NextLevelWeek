@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 import challenges from "../../challenges.json";
 
@@ -39,6 +39,11 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
     // Calculando a xp do usuário de acordo com a xp atual do lvl.
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
+    // Perdir permissão para enviar notificação para o usuário
+    useEffect(() => {
+        Notification.requestPermission();
+    }, []);
+
     function levelUp() {
         setLevel(level + 1);
     }
@@ -53,6 +58,12 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
         const challenge = challenges[randomChallengeIndex];
 
         setActiveChallenge(challenge);
+
+        if (Notification.permission === "granted") {
+            new Notification("Novo desafio 🎉", {
+                body: `Valendo ${challenge.amount} de XP!`,
+            });
+        }
     }
 
     // Função chamada quando o usuário falhar.
