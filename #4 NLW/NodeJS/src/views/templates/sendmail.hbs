@@ -1,0 +1,67 @@
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        width: 800px;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .values {
+        padding: 10px;
+        margin: 2px;
+        background: #8257e6;
+        color: #FFF;
+        border-radius: 6px;
+        width: 15px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .level {
+        display: flex;
+        margin: 10px;
+        justify-content: space-between;
+        width: 350px;
+    }
+
+    .answers {
+        display: flex;
+        justify-content: space-between;
+        width: 350px;
+    }
+</style>
+
+<div class="container">
+    <label>Olá <strong>{{nome}}</strong>, tudo bem ?</label>
+
+    <h3>{{title}}</h3>
+    <br />
+    <strong>{{description}}</strong>
+
+    <div class="level">
+        <span>Muito provável</span>
+        <span>Pouco provável</span>
+    </div>
+
+    <div class="answers">
+        <a class="values" href="{{link}}/1?u={{user_id}}">1</a>
+        <a class="values" href="{{link}}/2?u={{user_id}}">2</a>
+        <a class="values" href="{{link}}/3?u={{user_id}}">3</a>
+        <a class="values" href="{{link}}/4?u={{user_id}}">4</a>
+        <a class="values" href="{{link}}/5?u={{user_id}}">5</a>
+        <a class="values" href="{{link}}/6?u={{user_id}}">6</a>
+        <a class="values" href="{{link}}/7?u={{user_id}}">7</a>
+        <a class="values" href="{{link}}/8?u={{user_id}}">8</a>
+        <a class="values" href="{{link}}/9?u={{user_id}}">9</a>
+        <a class="values" href="{{link}}/10?u={{user_id}}">10</a>
+    </div>
+
+    <br />
+    <br />
+
+    <strong>Sua opinião é muito importante para nós!</strong>
+    <h3>Equipe | Move.it</h3>
+</div>
