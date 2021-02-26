@@ -4,9 +4,17 @@ import app from "../app";
 import createConnection from "../database";
 
 describe("Surveys", () => {
+    // Criando a conexão com o db para os testes.
     beforeAll(async () => {
         const connection = await createConnection();
         await connection.runMigrations();
+    });
+
+    // Depois que os testes forem executados o db vai ser dropado.
+    afterAll(async () => {
+        const connection = await createConnection();
+        await connection.dropDatabase();
+        await connection.close();
     });
 
     it("should be able to create a new survey", async () => {

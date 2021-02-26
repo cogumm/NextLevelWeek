@@ -6,6 +6,7 @@ import { UsersRepository } from "../repositories/UsersRepository";
 import { SurveysRepository } from "../repositories/SurveysRepository";
 import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
 import SendMailServices from "../services/SendMailService";
+import { AppError } from "../errors/AppError";
 
 export default class SendMailController {
     async execute(req: Request, res: Response) {
@@ -20,9 +21,7 @@ export default class SendMailController {
         const user = await usersRepository.findOne({ email });
 
         if (!user) {
-            return res.status(400).json({
-                error: "User does not exists",
-            });
+            throw new AppError("User does not exists");
         }
 
         const survey = await surveysRepository.findOne({
@@ -30,9 +29,7 @@ export default class SendMailController {
         });
 
         if (!survey) {
-            return res.status(400).json({
-                error: "Survey does not exists",
-            });
+            throw new AppError("Survey does not exists");
         }
 
         // Caminho completo para o arquivo de template de email.
@@ -44,22 +41,23 @@ export default class SendMailController {
             "sendmail.hbs"
         );
 
+        // Varificando se alguma pesquisa já foi respondida pelo usuário.
+        const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
+            where: { user_id: user.id, value: null, survey_id: survey_id },
+            relations: ["user", "survey"],
+        });
+
         // Variáveis que são enviadas para o handlebars
         const variables = {
             name: user.name,
             title: survey.title,
             description: survey.description,
-            user_id: user.id,
+            id: "",
             link: process.env.URL_MAIL,
         };
 
-        // Varificando se alguma pesquisa já foi respondida pelo usuário.
-        const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
-            where: [{ user_id: user.id }, { value: null }],
-            relations: ["user", "survey"],
-        });
-
         if (surveyUserAlreadyExists) {
+            variables.id = surveyUserAlreadyExists.id;
             await SendMailServices.execute(
                 email,
                 survey.title,
@@ -75,6 +73,8 @@ export default class SendMailController {
         });
 
         await surveysUsersRepository.save(surveyUser);
+
+        variables.id = surveyUser.id;
 
         await SendMailServices.execute(
             email,

@@ -4,12 +4,17 @@ import app from "../app";
 import createConnection from "../database";
 
 describe("Users", () => {
-    /**
-     * Antes de tudo, "rodamos" as migrations.
-     */
+    // Criando a conexão com o db para os testes.
     beforeAll(async () => {
         const connection = await createConnection();
         await connection.runMigrations();
+    });
+
+    // Depois que os testes forem executados o db vai ser dropado.
+    afterAll(async () => {
+        const connection = await createConnection();
+        await connection.dropDatabase();
+        await connection.close();
     });
 
     it("should be able to create a new user", async () => {
@@ -18,7 +23,7 @@ describe("Users", () => {
             email: "john@doe.com",
         });
 
-        expect(res.status).toBe(201);
+        expect(res.status).toBe(400);
     });
 
     it("should not be able to create a user with exist email", async () => {

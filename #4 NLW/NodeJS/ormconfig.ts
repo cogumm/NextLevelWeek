@@ -13,9 +13,9 @@ export default [
         charset: "utf8mb4",
         collation: "utf8mb4_general_ci",
 
-        acquireTimeout: process.env.DB_TIMEOUT,
-        migrationsRun: process.env.DB_MIGRATIONS_RUN,
-        synchronize: process.env.DB_SYNCHRONIZE,
+        // acquireTimeout: process.env.DB_TIMEOUT,
+        // migrationsRun: process.env.DB_MIGRATIONS_RUN,
+        // synchronize: process.env.DB_SYNCHRONIZE,
 
         logging: process.env.DB_LOGGING,
         logger: "advanced-console",
