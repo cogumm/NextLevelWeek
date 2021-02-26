@@ -42,4 +42,11 @@ import AnswerController from "./controllers/AnswerController";
 const answerController = new AnswerController();
 routes.get("/answers/:value", answerController.execute);
 
+/**
+ * Rota NPS.
+ */
+import NpsController from "./controllers/NpsController";
+const npsController = new NpsController();
+routes.get("/nps/:survey_id", npsController.execute);
+
 export default routes;
