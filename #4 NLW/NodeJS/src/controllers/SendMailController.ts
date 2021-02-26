@@ -44,22 +44,23 @@ export default class SendMailController {
             "sendmail.hbs"
         );
 
+        // Varificando se alguma pesquisa já foi respondida pelo usuário.
+        const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
+            where: { user_id: user.id, value: null, survey_id: survey_id },
+            relations: ["user", "survey"],
+        });
+
         // Variáveis que são enviadas para o handlebars
         const variables = {
             name: user.name,
             title: survey.title,
             description: survey.description,
-            user_id: user.id,
+            id: "",
             link: process.env.URL_MAIL,
         };
 
-        // Varificando se alguma pesquisa já foi respondida pelo usuário.
-        const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
-            where: [{ user_id: user.id }, { value: null }],
-            relations: ["user", "survey"],
-        });
-
         if (surveyUserAlreadyExists) {
+            variables.id = surveyUserAlreadyExists.id;
             await SendMailServices.execute(
                 email,
                 survey.title,
@@ -75,6 +76,8 @@ export default class SendMailController {
         });
 
         await surveysUsersRepository.save(surveyUser);
+
+        variables.id = surveyUser.id;
 
         await SendMailServices.execute(
             email,
