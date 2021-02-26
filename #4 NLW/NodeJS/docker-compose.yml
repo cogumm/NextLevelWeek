@@ -3,10 +3,10 @@ version: "3.7"
 services:
     # Aplicação
     api:
-        container_name: "nwl04-api"
+        container_name: "nlw04-nodejs"
         restart: always
         build: .
         ports:
             - ${PORT_APP}:${PORT_APP}
         volumes:
-            - ./:/app/nwl04_api
+            - ./:/app/nlw04_nodejs

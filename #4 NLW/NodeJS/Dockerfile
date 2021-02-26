@@ -14,6 +14,9 @@ COPY . .
 # Instalando as dependências
 RUN yarn install
 
+# Rodando as migrations
+RUN yarn typeorm migration:run
+
 # Expondo a porta da aplicação
 EXPOSE 3001
 
