@@ -1,8 +1,16 @@
 # NodeJS Trail (Back-end)
 
+<p align="center">
+  <img alt="preview" src=".github/preview.png" width="100%">
+</p>
+
 ## :information_source: What is the project ?
 
 If your goal is aligned with the backend, and you want to build scalable and simple web architectures using flexible and popular language, this trail is for you.
+
+## Diagram
+
+<img src=".github/diagrama.png" alt="Diagrama da aplicação" />
 
 ### :coffee: Who to use
 
