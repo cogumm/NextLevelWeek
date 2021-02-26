@@ -35,4 +35,11 @@ import SendMailController from "./controllers/SendMailController";
 const sendMailController = new SendMailController();
 routes.post("/sendmail", sendMailController.execute);
 
+/**
+ * Rota das respostas.
+ */
+import AnswerController from "./controllers/AnswerController";
+const answerController = new AnswerController();
+routes.get("/answers/:value", answerController.execute);
+
 export default routes;
