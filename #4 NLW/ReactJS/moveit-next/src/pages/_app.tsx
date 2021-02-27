@@ -1,5 +1,4 @@
 // import { useState } from "react";
-import { ChallengesProvider } from "../contexts/ChallengesContext";
 
 import "../styles/global.css";
 
@@ -12,9 +11,7 @@ function MyApp({ Component, pageProps }) {
 
     return (
         // <ChallengesContext.Provider value={{ level, levelUp }}>
-        <ChallengesProvider>
-            <Component {...pageProps} />
-        </ChallengesProvider>
+        <Component {...pageProps} />
         // </ChallengesContext.Provider>
     );
 }
