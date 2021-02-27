@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
+import { LevelUpModal } from "../components/LevelUpModal";
+
 import challenges from "../../challenges.json";
 
 interface Challenge {
@@ -18,6 +20,7 @@ interface ChallengesContextData {
     startNewChallenge: () => void;
     resetChallenge: () => void;
     completeChallenge: () => void;
+    closeLevelUpModal: () => void;
 }
 
 interface ChallengesProviderProps {
@@ -45,6 +48,9 @@ export function ChallengesProvider({
 
     const [activeChallenge, setActiveChallenge] = useState(null);
 
+    // Abrir o modal só quando o usuário upar de lvl;
+    const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+
     // Calculando a xp do usuário de acordo com a xp atual do lvl.
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -62,6 +68,12 @@ export function ChallengesProvider({
 
     function levelUp() {
         setLevel(level + 1);
+        setIsLevelUpModalOpen(true);
+    }
+
+    // Função para fechar o modal do lvl.
+    function closeLevelUpModal() {
+        setIsLevelUpModalOpen(false);
     }
 
     // Função para disparar um novo desafio.
@@ -123,9 +135,11 @@ export function ChallengesProvider({
                 startNewChallenge,
                 resetChallenge,
                 completeChallenge,
+                closeLevelUpModal,
             }}
         >
             {children}
+            {isLevelUpModalOpen && <LevelUpModal />}
         </ChallengesContext.Provider>
     );
 }
