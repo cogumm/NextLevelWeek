@@ -29,7 +29,7 @@ let countdownTimeout: NodeJS.Timeout;
  * O countdown precisa começar de um tempo e ir diminuindo em segundos.
  * (25 minutos * 60 segundos.)
  */
-const timeCountdown = 0.05;
+const timeCountdown = 25;
 
 export function CountdownProvider({ children }: CountdownProviderProps) {
     const { startNewChallenge } = useContext(ChallengesContext);
