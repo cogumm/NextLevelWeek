@@ -8,6 +8,10 @@
 
 <br>
 
+# Next Level Week - Together
+
+`#neverstoplearning`
+
 ## 🧪 Technologies
 
 This project was developed using the following technologies:
@@ -22,7 +26,7 @@ Clone the project and access the folder.
 
 ```bash
 $ git clone https://github.com/cogumm/NextLevelWeek.git
-$ cd cd '.\#6 NLW\LetmeAsk\'
+$ cd cd '.\#6 NLW\letmeask\'
 ```
 
 Follow the steps below:
@@ -33,6 +37,11 @@ $ yarn
 
 # Start the project
 $ yarn start
+
+# Your Firebase account settings in the application.
+## I renamed the .env.example file to just .env
+$ cp .env.example .env
+## Change the variables according to your Firebase settings.
 ```
 
 The app will be available for access on your browser at http://localhost:3000
