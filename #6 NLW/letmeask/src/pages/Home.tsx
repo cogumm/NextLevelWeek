@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 
-import { useAuth } from "../hooks/UseAuth";
+import { useAuth } from "../hooks/useAuth";
 
 import { Button } from "../components/Button";
 
