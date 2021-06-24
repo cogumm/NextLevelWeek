@@ -1,7 +1,9 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { useAuth } from "../hooks/useAuth";
+import { useRoom } from "../hooks/useRoom";
+
 import { database } from "../services/firebase";
 
 import { Button } from "../components/Button";
@@ -12,30 +14,6 @@ import logoImg from "../assets/images/logo.svg";
 
 import "../styles/room.scss";
 
-type FirebaseQuestions = Record<
-  string,
-  {
-    author: {
-      name: string;
-      avatar: string;
-    };
-    content: string;
-    isAnswered: boolean;
-    isHighlighted: boolean;
-  }
->;
-
-type QuestionType = {
-  id: string;
-  author: {
-    name: string;
-    avatar: string;
-  };
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
-};
-
 type RoomParams = {
   id: string;
 };
@@ -44,45 +22,15 @@ export function Room() {
   // Apenas usuários autenticados podem enviar novas perguntas.
   const { user } = useAuth();
 
-  // Informação da nova pergunta.
-  const [newQuestion, setNewQuestion] = useState("");
-  const [questions, setQuestions] = useState<QuestionType[]>([]);
-  const [title, setTitle] = useState("");
-
   // "Pegando" o código da sala através dos parâmetros.
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
-  // Buscando as perguntas da sala.
-  useEffect(() => {
-    // console.log(roomId);
-    // Referência da sala.
-    const roomRef = database.ref(`rooms/${roomId}`);
+  // Importando o Hook useRoom.
+  const { questions, title } = useRoom(roomId);
 
-    // // Buscando os dados das perguntas.
-    roomRef.on("value", (room) => {
-      const databaseRoom = room.val();
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
-
-      // console.log(room.val());
-      // Convertendo em um array o Objeto das perguntas.
-      const parsedQuestions = Object.entries(firebaseQuestions).map(
-        ([key, value]) => {
-          return {
-            id: key,
-            content: value.content,
-            author: value.author,
-            isHighlighted: value.isHighlighted,
-            isAnswered: value.isAnswered,
-          };
-        }
-      );
-
-      // console.log(parsedQuestions);
-      setTitle(databaseRoom.title);
-      setQuestions(parsedQuestions);
-    });
-  }, [roomId]);
+  // Informação da nova pergunta.
+  const [newQuestion, setNewQuestion] = useState("");
 
   // Função para a criação de uma nova pergunta.
   async function handleSendQuestion(event: FormEvent) {
