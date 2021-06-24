@@ -59,7 +59,7 @@ export function Room() {
     const roomRef = database.ref(`rooms/${roomId}`);
 
     // // Buscando os dados das perguntas.
-    roomRef.once("value", (room) => {
+    roomRef.on("value", (room) => {
       const databaseRoom = room.val();
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
 
