@@ -49,6 +49,12 @@ export function Home() {
       return;
     }
 
+    // Verificando se a sala já não está encerrada.
+    if (roomRef.val().endedAt) {
+      alert("Room already closed.");
+      return;
+    }
+
     // Caso verdadeiro.
     history.push(`/rooms/${roomCode}`);
   }
