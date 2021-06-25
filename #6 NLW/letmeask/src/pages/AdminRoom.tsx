@@ -1,10 +1,7 @@
-import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { useAuth } from "../hooks/useAuth";
+// import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
-
-import { database } from "../services/firebase";
 
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
@@ -19,6 +16,9 @@ type RoomParams = {
 };
 
 export function AdminRoom() {
+  // Apenas usuários autenticados podem enviar novas perguntas.
+  // const { user } = useAuth();
+
   // "Pegando" o código da sala através dos parâmetros.
   const params = useParams<RoomParams>();
   const roomId = params.id;
