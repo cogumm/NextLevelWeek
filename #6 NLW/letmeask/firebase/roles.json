@@ -1,0 +1,24 @@
+{
+  "rules": {
+    "rooms": {
+      ".read": false,
+      ".write": false,
+      "$roomId": {
+        ".read": "!root.child('/rooms/' + $roomId + '/endedAt').exists() || data.child('authorId').val() == auth.uid ",
+        ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.uid)",
+        "questions": {
+          ".read": "!root.child('/rooms/' + $roomId + '/endedAt').exists()",
+          ".write": false,
+          "$questionId": {
+            ".read": true,
+            ".write": "auth != null && !root.child('/rooms/' + $roomId + '/endedAt').exists() && (!data.exists() || data.child('author/id').val() == auth.uid)",
+            "likes": {
+              ".read": true,
+              ".write": "auth != null"
+            }
+          }
+        }
+      }
+    }
+  }
+}
