@@ -21,8 +21,6 @@
 
 <p align="center">
   <a href="#information_source-nlw---o-que-é-a-next-level-week">Next Level Week</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#1-primeira-nlw">#1 NLW</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#4-quarta-nlw">#4 NLW</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
@@ -32,29 +30,6 @@ Next Level Week (NLW) é uma semana prática com muito código e desafios, onde 
 
 Através do método da Rocketseat, aprenderemos novas ferramentas, novas tecnologias e descobriremos hacks que irão impulsionar sua carreira.
 Um evento online e totalmente gratuito que o ajudará a dar o próximo passo na sua evolução como desenvolvedor.
-
-## #1 Primeira NLW
-
-Nesta primeira Next Level Week foi subdividida em duas, na Starter onde foi ensinado os conceitos básicos e na Booster onde os conceitos são mais avançados, desde uma API até uma aplicação mobile.
-
-<h1 align="center">
-    <img alt="Next Level Week 1" title="Next Level Week 1" src="./.github/nlw1.jpg" width="500px" />
-</h1>
-
-## #4 Quarta NLW
-
-Nesta quarta Next Level Week foi subdividida em três trilhas, ReactJS (front-end), NodeJS (back-end) e Elixir (back-end).
-
--   Trilha ReactJS (Front-end)
-
-    > Se o seu objetivo está alinhado com o front-end, e você deseja construir interfaces modernas e reativas na web utilizando uma biblioteca modular e escalável, essa trilha é para você.
-
--   Trilha Node.js (Back-end)
-
-    > Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você.
-
--   Trilha Elixir (Back-end)
-    > Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você.
 
 ## :memo: License
 
