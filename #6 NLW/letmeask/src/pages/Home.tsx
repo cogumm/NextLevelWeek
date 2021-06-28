@@ -38,7 +38,9 @@ export function Home() {
 
     // Se retornar vazio, nada irá acontecer.
     if (roomCode.trim() === "") {
-      toast.error("Enter a valid room code.");
+      toast.error("Enter a valid room code.", {
+        icon: "⚠️",
+      });
       return;
     }
 
@@ -48,14 +50,18 @@ export function Home() {
     // Caso retorne falso.
     if (!roomRef.exists()) {
       // alert("Room does not exists.");
-      toast.error("Room does not exists.");
+      toast.error("Room does not exists.", {
+        icon: "⚠️",
+      });
       return;
     }
 
     // Verificando se a sala já não está encerrada.
     if (roomRef.val().endedAt) {
       // alert("Room already closed.");
-      toast.error("Room already closed.");
+      toast.error("Room already closed.", {
+        icon: "⚠️",
+      });
       return;
     }
 

@@ -38,7 +38,9 @@ export function Room() {
     event.preventDefault();
 
     if (newQuestion.trim() === "") {
-      toast.error("You cannot submit an empty question.");
+      toast.error("You cannot submit an empty question.", {
+        icon: "⚠️",
+      });
       return;
     }
 

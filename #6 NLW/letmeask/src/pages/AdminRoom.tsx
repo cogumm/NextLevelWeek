@@ -32,7 +32,7 @@ export function AdminRoom() {
   // Importando o Hook useRoom.
   const { questions, title } = useRoom(roomId);
 
-  console.log(questions);
+  // console.log(questions);
 
   // Função para remover a pergunta.
   async function handleDeleteQuestion(questionId: string) {
@@ -43,11 +43,14 @@ export function AdminRoom() {
 
   // Função para encerrar a sala.
   async function handleEndRoom() {
-    await database.ref(`rooms/${roomId}`).update({
-      endedAt: new Date(),
-    });
+    if (window.confirm("Você tem certeza que deseja encerrar essa sala ?")) {
+      await database.ref(`rooms/${roomId}`).update({
+        endedAt: new Date(),
+      });
+      history.push("/");
+    }
 
-    history.push("/");
+    return;
   }
 
   // Função para checar se a pergunta foi respondida.

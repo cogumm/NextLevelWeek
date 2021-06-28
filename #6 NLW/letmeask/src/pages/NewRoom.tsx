@@ -28,7 +28,9 @@ export function NewRoom() {
     // Tendo acesso ao valor do input.
     // console.log(newRoom);
     if (newRoom.trim() === "") {
-      toast.error("Room name cannot be empty.");
+      toast.error("Room name cannot be empty.", {
+        icon: "⚠️",
+      });
       return;
     }
 
