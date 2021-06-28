@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 import { database } from "../services/firebase";
 import { useAuth } from "../hooks/useAuth";
@@ -27,6 +28,7 @@ export function NewRoom() {
     // Tendo acesso ao valor do input.
     // console.log(newRoom);
     if (newRoom.trim() === "") {
+      toast.error("Room name cannot be empty.");
       return;
     }
 
@@ -43,6 +45,7 @@ export function NewRoom() {
 
   return (
     <div id="page-auth">
+      <Toaster position="top-right" reverseOrder={false} />
       <aside>
         <img
           src={illustrationImg}

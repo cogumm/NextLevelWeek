@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -37,6 +38,7 @@ export function Home() {
 
     // Se retornar vazio, nada irá acontecer.
     if (roomCode.trim() === "") {
+      toast.error("Enter a valid room code.");
       return;
     }
 
@@ -45,13 +47,15 @@ export function Home() {
 
     // Caso retorne falso.
     if (!roomRef.exists()) {
-      alert("Room does not exists.");
+      // alert("Room does not exists.");
+      toast.error("Room does not exists.");
       return;
     }
 
     // Verificando se a sala já não está encerrada.
     if (roomRef.val().endedAt) {
-      alert("Room already closed.");
+      // alert("Room already closed.");
+      toast.error("Room already closed.");
       return;
     }
 
@@ -61,6 +65,7 @@ export function Home() {
 
   return (
     <div id="page-auth">
+      <Toaster position="top-right" reverseOrder={false} />
       <aside>
         <img
           src={illustrationImg}

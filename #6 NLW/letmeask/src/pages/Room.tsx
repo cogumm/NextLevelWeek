@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
@@ -37,6 +38,7 @@ export function Room() {
     event.preventDefault();
 
     if (newQuestion.trim() === "") {
+      toast.error("You cannot submit an empty question.");
       return;
     }
 
@@ -85,6 +87,7 @@ export function Room() {
 
   return (
     <div id="page-room">
+      <Toaster position="top-right" reverseOrder={false} />
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
