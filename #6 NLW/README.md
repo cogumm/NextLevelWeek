@@ -7,7 +7,7 @@
 </h1>
 
 <h1 align="center">
-    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/letmeAskMobile.png" />
+    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/LetmeAskMobile.png" />
 </h1>
 
 <br>
