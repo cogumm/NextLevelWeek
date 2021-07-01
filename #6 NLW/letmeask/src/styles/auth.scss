@@ -5,38 +5,48 @@
 
   aside {
     flex: 7;
-
-    background: #835afd;
+    background: var(--purple);
     color: #fff;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    padding: 120px 80px;
+    animation: asideAnimation 3s;
+    padding: 12rem 8rem;
 
     img {
-      max-width: 320px;
+      max-width: 32rem;
+      animation: contentAnimation 3s;
     }
 
     strong {
-      font: 700 36px "Poppins", sans-serif;
-      line-height: 42px;
-      margin-top: 16px;
+      font: 700 3.6rem "Poppins", sans-serif;
+      line-height: 4.2rem;
+      margin-top: 1.6rem;
+      animation: contentAnimation 3s;
     }
 
     p {
-      font-size: 24px;
-      line-height: 32px;
-      margin-top: 16px;
-      color: #f8f8f8;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      margin-top: 1.6rem;
+      color: var(--white);
+      animation: contentAnimation 3s;
+    }
+    @media (max-width: 768px) {
+      width: 30%;
+    }
+
+    @media (max-width: 700px) {
+      display: none;
     }
   }
 
   main {
     flex: 8;
 
-    padding: 0 32px;
+    padding: 0 3.2rem;
 
     display: flex;
     align-items: center;
@@ -47,17 +57,19 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 320px;
+    max-width: 32rem;
     align-items: stretch;
     text-align: center;
+
+    animation: mainAnimation 3s;
 
     > img {
       align-self: center;
     }
 
     h2 {
-      font-size: 24px;
-      margin: 64px 0 24px;
+      font-size: 2.4rem;
+      margin: 6.4rem 0 2.4rem;
       font-family: "Poppins", sans-serif;
     }
 
@@ -67,7 +79,7 @@
         border-radius: 8px;
         padding: 0 16px;
         background: #fff;
-        border: 1px solid #a8a8b3;
+        border: 1px solid var(--gray);
       }
 
       button {
@@ -81,9 +93,9 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: 1.4rem;
       color: #737380;
-      margin-top: 16px;
+      margin-top: 1.6rem;
 
       a {
         color: #e559f9;
@@ -92,11 +104,11 @@
   }
 
   .create-room {
-    margin-top: 64px;
-    height: 50px;
-    border-radius: 8px;
+    margin-top: 6.4rem;
+    height: 5rem;
+    border-radius: 0.8rem;
     font-weight: 500;
-    background: #ea4335;
+    background: var(--red);
     color: #fff;
 
     display: flex;
@@ -109,7 +121,7 @@
     transition: filter 0.2s;
 
     img {
-      margin-right: 8px;
+      margin-right: 0.8rem;
     }
 
     &:hover {
@@ -118,28 +130,64 @@
   }
 
   .separator {
-    font-size: 14px;
-    color: #a8a8b3;
+    font-size: 1.6rem;
+    color: var(--gray);
 
-    margin: 32px 0;
-
+    margin: 3.2rem 0;
     display: flex;
     align-items: center;
 
     &::before {
       content: "";
       flex: 1;
-      height: 1px;
-      background: #a8a8b3;
-      margin-right: 16px;
+      height: 0.1rem;
+      background: var(--gray);
+      margin-right: 1.6rem;
     }
 
     &::after {
       content: "";
       flex: 1;
-      height: 1px;
-      background: #a8a8b3;
-      margin-left: 16px;
+      height: 0.1rem;
+      background: var(--gray);
+      margin-left: 1.6rem;
     }
+  }
+}
+
+@keyframes asideAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mainAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
