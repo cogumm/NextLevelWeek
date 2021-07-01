@@ -6,7 +6,7 @@
   aside {
     flex: 7;
     background: var(--purple);
-    color: #fff;
+    color: var(--white);
 
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
       font-size: 2.4rem;
       line-height: 3.2rem;
       margin-top: 1.6rem;
-      color: var(--white);
+      color: var(--white-bg);
       animation: contentAnimation 3s;
     }
     @media (max-width: 768px) {
@@ -78,7 +78,7 @@
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: #fff;
+        background: var(--white);
         border: 1px solid var(--gray);
       }
 
@@ -94,7 +94,7 @@
 
     p {
       font-size: 1.4rem;
-      color: #737380;
+      color: var(--color-gray-magenta);
       margin-top: 1.6rem;
 
       a {
@@ -109,7 +109,7 @@
     border-radius: 0.8rem;
     font-weight: 500;
     background: var(--red);
-    color: #fff;
+    color: var(--white);
 
     display: flex;
     justify-content: center;

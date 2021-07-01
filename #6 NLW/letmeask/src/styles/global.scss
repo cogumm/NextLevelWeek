@@ -7,16 +7,18 @@
 :root {
   font-size: 62.5%;
 
-  --white: #f8f8f8;
+  --white: #fff;
+  --white-bg: #f8f8f8;
   --gray: #a8a8b3;
   --red: #ea4335;
   --purple: #835afd;
-  --color-body: #29292e;
+  --color-blue-magenta: #29292e;
+  --color-gray-magenta: #737380;
 }
 
 body {
-  background: var(--white);
-  color: var(--color-body);
+  background: var(--white-bg);
+  color: var(--color-blue-magenta);
 }
 
 body,

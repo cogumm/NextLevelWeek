@@ -15,7 +15,7 @@
     border: 1px solid var(--purple);
 
     footer .user-info span {
-      color: #29292e;
+      color: var(--color-blue-magenta);
     }
   }
 
@@ -24,7 +24,7 @@
   }
 
   p {
-    color: #29292e;
+    color: var(--color-blue-magenta);
   }
 
   footer {
@@ -45,7 +45,7 @@
 
       span {
         margin-left: 0.8rem;
-        color: #737380;
+        color: var(--color-gray-magenta);
         font-size: 1.4rem;
       }
     }
@@ -65,7 +65,7 @@
       &.like-button {
         display: flex;
         align-items: center;
-        color: #737380;
+        color: var(--color-gray-magenta);
         gap: 0.8rem;
 
         &.liked {

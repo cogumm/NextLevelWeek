@@ -42,7 +42,7 @@
       h1 {
         font-family: "Poppins", sans-serif;
         font-size: 2.4rem;
-        color: #29292e;
+        color: var(--color-blue-magenta);
       }
 
       span {
@@ -50,7 +50,7 @@
         background: #e559f9;
         border-radius: 9999px;
         padding: 0.8rem 1.6rem;
-        color: #fff;
+        color: var(--white);
         font-weight: 500;
         font-size: 14px;
       }
@@ -86,7 +86,7 @@
 
           span {
             margin-left: 0.8rem;
-            color: #29292e;
+            color: var(--color-blue-magenta);
             font-weight: 500;
             font-size: 1.4rem;
           }
@@ -94,13 +94,13 @@
 
         > span {
           font-size: 1.4rem;
-          color: #737380;
+          color: var(--color-gray-magenta);
           font-weight: 500;
 
           button {
             background: transparent;
             border: 0;
-            color: #835afd;
+            color: var(--purple);
             text-decoration: underline;
             font-size: 1.4rem;
             font-weight: 500;

@@ -3,7 +3,7 @@
   border-radius: 0.8rem;
   font-weight: 500;
   background: var(--purple);
-  color: #fff;
+  color: var(--white);
   padding: 0 1rem;
 
   display: flex;
@@ -20,7 +20,7 @@
   }
 
   &.outlined {
-    background: #fff;
+    background: var(--white);
     border: 1px solid var(--purple);
     color: var(--purple);
   }
