@@ -3,7 +3,11 @@
 </p>
 
 <h1 align="center">
-    <img alt="Letmeask" title="Letmeask" src="../.github/nlw6cover.svg" />
+    <img alt="Letmeask Web" title="Letmeask Web" src="../.github/nlw6cover.svg" />
+</h1>
+
+<h1 align="center">
+    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/letmeAskMobile.png" />
 </h1>
 
 <br>
@@ -12,6 +16,10 @@
 
 `#neverstoplearning`
 
+## Differential
+
+React Hot Toast, mobile version, small details with animations on the screens.
+
 ## 🧪 Technologies
 
 This project was developed using the following technologies:
@@ -19,6 +27,7 @@ This project was developed using the following technologies:
 -   [React](https://reactjs.org)
 -   [Firebase](https://firebase.google.com/)
 -   [TypeScript](https://www.typescriptlang.org/)
+-   [React Hot Toast](https://react-hot-toast.com/)
 
 ## 🚀 Getting started
 
