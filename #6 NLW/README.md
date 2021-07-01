@@ -6,9 +6,14 @@
     <img alt="Letmeask Web" title="Letmeask Web" src="../.github/nlw6cover.svg" />
 </h1>
 
-<h1 align="center">
-    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/LetmeAskMobile.png" />
-</h1>
+<div align="center">
+    <h2>Página de principal</h2>
+    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/LetmeAskMobile.png"/>
+    <h2>Página da sala de perguntas visão "usuário"</h2>
+    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/LetmeAskMobileRoom.png"/>
+    <h2>Página da sala de perguntas visão "dono da sala"</h2>
+    <img alt="Letmeask Mobile" title="Letmeask Mobile" src="../.github/LetmeAskMobileAdminRoom.png"/>
+</div>
 
 <br>
 
