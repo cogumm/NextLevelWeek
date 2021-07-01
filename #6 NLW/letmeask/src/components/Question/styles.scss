@@ -1,9 +1,8 @@
 .question {
   background: #fefefe;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-
-  padding: 24px;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.04);
+  padding: 2.4rem;
 
   // & se referencia do mesmo elemento.
   // Toda "question" a partir da 2ª em diante, recebe "margin-top" de 8px;
@@ -13,7 +12,7 @@
 
   &.highlighted {
     background: #f4f0ff;
-    border: 1px solid #835afd;
+    border: 1px solid var(--purple);
 
     footer .user-info span {
       color: #29292e;
@@ -32,55 +31,54 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-top: 24px;
+    margin-top: 2.4rem;
 
     .user-info {
       display: flex;
       align-items: center;
 
       img {
-        width: 32px;
-        height: 32px;
+        width: 3.2rem;
+        height: 3.2rem;
         border-radius: 50%;
       }
 
       span {
-        margin-left: 8px;
+        margin-left: 0.8rem;
         color: #737380;
-        font-size: 14px;
+        font-size: 1.4rem;
       }
     }
 
     > div {
       display: flex;
-      gap: 16px;
+      gap: 1.6rem;
     }
 
     button {
       border: 0;
       background: transparent;
       cursor: pointer;
-      transition: filter 0.2s;
+
+      transition: filter 0.2;
 
       &.like-button {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         color: #737380;
-
-        gap: 8px;
+        gap: 0.8rem;
 
         &.liked {
-          color: #835afd;
+          color: var(--purple);
 
           svg path {
-            stroke: #835afd;
+            stroke: var(--purple);
           }
         }
       }
 
       &:hover {
-        filter: brightness(0.7);
+        filter: brightness(0.8);
       }
     }
   }
